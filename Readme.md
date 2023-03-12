@@ -1,6 +1,6 @@
------------------------------
-- 540438 - Maurizio La Rosa -
------------------------------
+-------------------------------
+-- 540438 - Maurizio La Rosa --
+-------------------------------
 
 This repository hosts the project to build for the exam of the course Database - Module A, from the Data Analysis degree of the University of Messina.
 The project consists in the creation of a web application that is capable of managing a database through html forms and PHP.
