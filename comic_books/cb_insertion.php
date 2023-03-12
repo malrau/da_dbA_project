@@ -11,8 +11,11 @@
 	    // otherwise a blank page would occur in case of errors
 	    mysqli_report(MYSQLI_REPORT_ERROR);
 
+	    // assign password to PHP variable
+	    $psw = $_POST['psw'];
+
 	    // create and check connection to MariaDB
-	    $conn = mysqli_connect('localhost', 'root', '', 'test2');
+	    $conn = mysqli_connect('localhost', 'root', $psw, 'cb_collection');
 	    if(!$conn) {
 		echo "<h3>Cannot connect to MariaDB: </h3>" . mysqli_connect_error();
 		exit;
@@ -27,7 +30,7 @@
 	    $editor = $_POST['editor'];
 
 	    // perform and check insertion into the chosen table
-	    $sql = "INSERT INTO comic_book(series, issueNumber, coverTitle, editor) VALUES('$series', '$issue', '$title', '$editor')";
+	    $sql = "INSERT INTO comic_book(series, issueNumber, coverTitle) VALUES('$series', '$issue', '$title')";
 	    if(mysqli_query($conn, $sql)) {
 		echo "<h3>Data was successfully inserted into the table <i>comic_book</i>.</h3>";
 	    } else {
@@ -37,8 +40,8 @@
 
 	<br>
 	<p>
-	    <a href = 'delete_cb.html'><button>Back to the insert comic book page</button></a>
-	    <a href = 'comic_books.html'>Back to the comic books page</button></a>
+	    <a href = 'insert_cb.html'><button>Back to the insert comic book page</button></a>
+	    <a href = 'comic_books.html'><button>Back to the comic books page</button></a>
 	    <a href = '../index.html'><button>Back to the main page</button></a>
 	</p>
     </body>

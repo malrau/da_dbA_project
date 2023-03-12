@@ -9,8 +9,11 @@
 	<?php
 	    mysqli_report(MYSQLI_REPORT_ERROR);
 
+	    // assign autentication password to PHP variable
+	    $psw = $_POST['psw'];
+
 	    // create and check connection to MariaDB
-	    $conn = mysqli_connect('localhost', 'root', '', 'test2');
+	    $conn = mysqli_connect('localhost', 'root', $psw, 'cb_collection');
 	    if(!$conn) {
 		echo "<h3>Cannot connect to mariaDB: </h3>" . mysqli_connect_error();
 		exit;
@@ -24,11 +27,11 @@
 	    $pseudo = $_POST['pseudo'];
 
 	    //perform and check insertion into the chosen table
-	    $sql = "INSERT INTO character(firstName, lastName, pseudonym) VALUES('$firstName', '$lastName', '$pseudo')";
+	    $sql = "INSERT INTO figure(firstName, lastName, pseudonym) VALUES('$firstName', '$lastName', '$pseudo')";
 	    if(mysqli_query($conn, $sql)) {
-		echo "<h3>Data was successfully inserted into the table <i>character</i>.</h3>";
+		echo "<h3>Data was successfully inserted into the table <i>figure</i>.</h3>";
 	    } else {
-		echo "<h3>ERROR! Could not insert data into the table <i>character</i>: </h3>" . mysqli_error($conn);
+		echo "<h3>ERROR! Could not insert data into the table <i>figure</i>: </h3>" . mysqli_error($conn);
 	    }
 	?>
 
