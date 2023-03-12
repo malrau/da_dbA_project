@@ -1,5 +1,7 @@
 CREATE DATABASE cb_collection;
 
+USE cb_collection;
+
 CREATE TABLE character(
     firstName VARCHAR(30),
     lastName VARCHAR(30),
