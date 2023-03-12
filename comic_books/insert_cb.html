@@ -1,0 +1,48 @@
+<html>
+    <head>
+	<title>
+	    Webapp - comic book insertion page
+	</title>
+    </head>
+
+    <body>
+	<p>
+	    <center>
+		<h2>In this page you can submit the data <br> for each new comic book in your collection</h2>
+	    </center>
+	</p>
+
+	<br>
+	<form method = 'post' action = 'cb_insertion.php'>
+	
+	<p>
+	    Insert the comic book series here <input type = 'text' name = 'insert_series'>
+	</p>
+	<p>
+	    Insert the comic book issue number here <input type = 'text' name = 'insert_issue'>
+	</p>
+	<p>
+	    Insert the comic book issue cover title here <input type = 'text' name = 'cover_title'>
+	</p>
+	<p>
+	    Choose the editor <select name = 'editor'>
+	    <option> DC Comics
+	    <option> Marvel Comics
+	    <option> Sergio Bonelli Editore
+	    </select>
+	</p>
+	<p>
+	    <input type = 'submit' value = 'send data'>
+	    <input type = 'reset' value = 'reset fields'>
+	</p>
+	
+	</form>
+
+	<br>
+	<p>
+	    <a href = 'comic_books.html'><button>Back to the comic books page</button></a>
+	    <a href = '../index.html'><button>Back to the main page</button></a>
+	</p>
+
+    </body>
+</html>
