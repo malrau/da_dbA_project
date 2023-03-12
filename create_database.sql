@@ -2,7 +2,7 @@ CREATE DATABASE cb_collection;
 
 USE cb_collection;
 
-CREATE TABLE character(
+CREATE TABLE figure(
     firstName VARCHAR(30),
     lastName VARCHAR(30),
     pseudonym VARCHAR(20),
@@ -19,17 +19,17 @@ CREATE TABLE comic_book(
 CREATE TABLE starring(
     comic_book VARCHAR(50),
     issue INT,
-    character VARCHAR(20),
+    figure VARCHAR(20),
     role VARCHAR(12),
     city VARCHAR(30),
     state VARCHAR(30),
-    PRIMARY KEY(comic_book, issue, character),
+    PRIMARY KEY(comic_book, issue, figure),
     FOREIGN KEY(comic_book, issue) 
         REFERENCES comic_book(series, issueNumber)
         ON DELETE no action,
         ON UPDATE cascade,
-    FOREIGN KEY(character)
-        REFERENCES character(pseudonym)
+    FOREIGN KEY(figure)
+        REFERENCES figure(pseudonym)
         ON DELETE no action,
         ON UPDATE cascade
     );
