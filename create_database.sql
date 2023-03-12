@@ -26,11 +26,11 @@ CREATE TABLE starring(
     PRIMARY KEY(comic_book, issue, figure),
     FOREIGN KEY(comic_book, issue) 
         REFERENCES comic_book(series, issueNumber)
-        ON DELETE no action,
+        ON DELETE no action
         ON UPDATE cascade,
     FOREIGN KEY(figure)
         REFERENCES figure(pseudonym)
-        ON DELETE no action,
+        ON DELETE no action
         ON UPDATE cascade
     );
 
