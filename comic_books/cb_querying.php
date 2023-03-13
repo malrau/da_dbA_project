@@ -22,17 +22,22 @@
 	    }
 
 	    // assign data to PHP variables
-	    if($_POST['choice'] == 'all') {
-		$series = $_POST['choice'];         # if we select whole collection, $series will assume the value 'all'
+	    if(!$_POST['count']) {
+		echo "No choice taken";
+		exit;
 	    } else {
-		$series = $_POST['chosen_series'];  # otherwise it will assume the name of the chosen series
+		if($_POST['count'] == 'all') {
+		    $series_count = $_POST['count'];                # if we select whole collection, $series will assume the value 'all'
+		} else {
+		    $series_count = $_POST['chosen_series_count'];  # otherwise it will assume the name of the chosen series
+		}
 	    }
 
 	    // perform and check query as per the choice taken
-	    if($series == 'all') {
+	    if($series_count == 'all') {
 		$sql = "SELECT COUNT(*) AS 'number of comic books' FROM comic_book";
 	    } else {
-		$sql = "SELECT COUNT(*) FROM comic_book WHERE series = '$series'";
+		$sql = "SELECT COUNT(*) FROM comic_book WHERE series = '$series_count'";
 	    }
 
 /*	    if(mysqli_query($conn, $sql)) {
