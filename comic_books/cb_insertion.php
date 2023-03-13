@@ -27,7 +27,6 @@
 	    $series = $_POST['insert_series'];
 	    $issue = $_POST['insert_issue'];
 	    $title = $_POST['cover_title'];
-	    $editor = $_POST['editor'];
 
 	    // perform and check insertion into the chosen table
 	    $sql = "INSERT INTO comic_book(series, issueNumber, coverTitle) VALUES('$series', '$issue', '$title')";

@@ -31,7 +31,7 @@
 	    if(mysqli_query($conn, $sql)) {
 		echo "<h3>Data from table <i>comic_book</i> was successfully updated</h3>";
 	    } else {
-		echo "<h3>Could not update data from table <i>comic_book</i></h3>" . mysqli_error($conn);
+		echo "<h3>ERROR! Could not update data from table <i>comic_book</i></h3>" . mysqli_error($conn);
 	    }
 
 	?>
