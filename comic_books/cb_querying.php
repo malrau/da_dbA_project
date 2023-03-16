@@ -45,7 +45,7 @@
 	    // perform counting query as per the choice taken and show it in a html table
 	    if($series_count) {
 		if($series_count == 'all') {
-		    $sql = "SELECT COUNT(*) AS 'number of comic books' FROM comic_book";
+		    $sql = "SELECT COUNT(*) AS 'No. of comic books' FROM comic_book";
 		} else {
 		    $sql = "SELECT COUNT(*) FROM comic_book WHERE series = '$series_count'";
 		}
@@ -62,7 +62,7 @@
 
 		    echo "<tr>";
 			foreach($fInfo as $val) {
-			    echo "<td>" . $val -> name . "</td>";
+			    echo "<th>" . $val -> name . "</th>";
 			}
 		    echo "</tr>";
 
@@ -83,7 +83,7 @@
 		if($series_coll == 'all') {
 		    $sql2 = "SELECT * FROM comic_book";
 		} else {
-		    $sql2 = "SELECT * FROM comic_book WHERE series = '$series_coll'";
+		    $sql2 = "SELECT series AS Series, issueNumber AS Issue, coverTitle AS Title FROM comic_book WHERE series = '$series_coll'";
 		}
 		// assign the result of the query to a PHP variable
 		$result2 = mysqli_query($conn, $sql2);
@@ -97,7 +97,7 @@
 
 		    echo "<tr>";
 			foreach($fInfo as $val) {
-			    echo "<td>" . $val -> name . "</td>";
+			    echo "<th>" . $val -> name . "</th>";
 			}
 		    echo "</tr>";
 
