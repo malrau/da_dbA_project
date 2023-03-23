@@ -10,7 +10,8 @@
 	    mysqli_report(MYSQLI_REPORT_ERROR);
 
 	    // assign password to PHP variable
-	    $psw = $_POST['psw'];
+	    $config = parse_ini_file('../config.ini');
+	    foreach($config as $val) $psw = $val;
 
 	    // create and check connection to MariaDB
 	    $conn = mysqli_connect('localhost', 'root', $psw, 'cb_collection');

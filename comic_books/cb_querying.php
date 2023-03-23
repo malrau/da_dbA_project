@@ -10,10 +10,11 @@
 	    mysqli_report(MYSQLI_REPORT_ERROR);
 
 	    // assign passord to PHP variable
-	    $psw = $_POST['psw'];
+	    $config = parse_ini_file('../config.ini');
+	    foreach($config as $val) $psw = $val;
 
 	    // create and check connection to mariaDB
-	    $conn = mysqli_connect('localhost', 'root', '', 'cb_collection');
+	    $conn = mysqli_connect('localhost', 'root', $psw, 'cb_collection');
 	    if(!$conn) {
 		echo "<h3>Cannot connect to MariaDB: </h3>" . mysqli_connect_error();
 		exit;
@@ -119,7 +120,7 @@
 	<p>
 	    <a href = 'query_cb.html'><button>Back to the comic books query page</button></a>
 	    <a href = 'comic_books.html'><button>Back to the comic books page</button></a>
-	    <a href = '..\index.html'><button>Back to the main page</button></a>
+	    <a href = '../index.html'><button>Back to the main page</button></a>
 	</p>
 
     </body>
