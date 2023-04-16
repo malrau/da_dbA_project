@@ -10,5 +10,5 @@ The conceptual schema is presented through an Entity-Relationship model drawn wi
 
 The logical schema is implemented through sql code within the file create_database.sql. The file contains the code for the creation of the database and of the relations (tables) that describe its schema.
 
-The webapp is built through simple html files that code forms that allow to submit the data to PHP variables that are fed to SQL code through PHP files.
+The webapp is built through simple html files that code forms that allow to submit the data to PHP variables that are fed to a MySQL server through PHP files.
 
