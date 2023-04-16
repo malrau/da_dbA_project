@@ -7,19 +7,26 @@
 
     <body>
 	<?php
+	    // the following line allows me to report connection errors,
+	    // otherwise a blank page would occur in case of errors
 	    mysqli_report(MYSQLI_REPORT_ERROR);
-	
-	    // retrieve password from configuration file and assign it to PHP variable
-	    $config = parse_ini_file('../config.ini');
-	    foreach($config as $val) $psw = $val;
 
-	    // create and check connection to MariaDB
-	    $conn = mysqli_connect('localhost', 'root', $psw, 'cb_collection');
+		// return settings from configuration file into an associative array
+	    $config = parse_ini_file('../config.ini');
+	    // get parameters to access MySQL from associative array and
+	    // assign them to PHP variables
+	    $servername = $config['servername'];
+	    $username = $config['username'];
+	    $password = $config['password'];
+	    $dbname = $config['dbname'];
+
+	    // create and check connection to MySQL
+	    $conn = mysqli_connect($servername, $username, $password, $dbname);
 	    if(!$conn) {
-		echo "<h3>Cannot connect to MariaDB: </h3>" . mysqli_connect_error();
+		echo "<h3>Cannot connect to MySQL: </h3>" . mysqli_connect_error();
 		exit;
 	    } else {
-		echo "<h3>Successfully connected to MariaDB.</h3>";
+		echo "<h3>Successfully connected to MySQL.</h3>";
 	    }
 
 	    // Assign data to PHP variables
