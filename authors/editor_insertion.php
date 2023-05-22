@@ -23,10 +23,10 @@
 	    // create and check connection to MySQL
 	    $conn = mysqli_connect($servername, $username, $password, $dbname);
 	    if(!$conn) {
-		echo "<h3>Cannot connect to MySQL: </h3>" . mysqli_connect_error();
-		exit;
+			echo "<h3>Cannot connect to MySQL: </h3>" . mysqli_connect_error();
+			exit;
 	    } else {
-		echo "<h3>Successfully connected to MySQL.</h3>";
+			echo "<h3>Successfully connected to MySQL.</h3>";
 	    }
 
 	    // assign submitted data to PHP variables
