@@ -30,11 +30,12 @@
 		
 		// assign submitted data to php variables
 		$editorName = $_POST['editor'];
+		echo $editorName . " THIS IS IT";
 		//$editorCity = $_POST['editor_city'];
 		
 		// perform and check deletion from the chosen table
-		$sql = 'DELETE FROM editor WHERE name = $editorName';
-		if($sql) {
+		$sql = "DELETE FROM editor WHERE name = '$editorName'";
+		if(mysqli_query($conn, $sql)) {
 			echo "<h3>Data was successfully removed from the table <i></i>editor</i>.</h3>";
 		} else {
 			echo "<he>ERROR Could not remove data from the table <i>editor</i>.</h3>";

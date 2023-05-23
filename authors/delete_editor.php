@@ -16,7 +16,7 @@
 
 				mysqli_report(MYSQLI_REPORT_ERROR);
 
-				$config = parse_ini_file('../config.ini');
+				$config     = parse_ini_file('../config.ini');
 				$servername = $config['servername'];
 				$username   = $config['username'];
 				$password   = $config['password'];
@@ -37,7 +37,9 @@
 						echo "<form method = 'post' action = 'editor_deletion.php'>";
 						echo "<select name = 'editor'>";
 						while ($row = mysqli_fetch_array($result)) {
-							echo "<option value = \' . $row[0] . \'>" . $row[0] . "<option>";
+							echo "<option value = '$row[0]'>";
+							echo $row[0];
+							echo "</option>";
 						}
 						echo "</select>";
 						echo "<input type = 'submit' value = 'submit choice'>";
@@ -48,7 +50,7 @@
 						echo "<h3>No matching records are found.</h3>";
 					}
 				} else {
-					echo "ERROR. Cannot execute $sql . " . mysqli_error($conn);
+					echo "<h3></h3>ERROR. Cannot execute $sql.</h3>" . mysqli_error($conn);
 				}
 			?>
 
