@@ -25,17 +25,27 @@
 			echo '<h3>Cannot connect to Mysql</h3>' . mysqli_connect_error();
 			exit;
 		} else {
-			echo '<h3>Successfully connected to Mysql</h3>';
+			echo '<h3>Successfully connected to Mysql.</h3>';
 		}
 		
 		// assign submitted data to php variables
-		$editorName = $_POST['editor_name'];
-		$editorCity = $_POST['editor_city'];
+		$editorName = $_POST['editor'];
+		//$editorCity = $_POST['editor_city'];
 		
 		// perform and check deletion from the chosen table
 		$sql = 'DELETE FROM editor WHERE name = $editorName';
-
-	    
+		if($sql) {
+			echo "<h3>Data was successfully removed from the table <i></i>editor</i>.</h3>";
+		} else {
+			echo "<he>ERROR Could not remove data from the table <i>editor</i>.</h3>";
+		}	    
 		?>
+		<br>
+		<p>
+			<a href = 'delete_editor.php'><button>Back to the delete editor page</button></a>
+			<a href = 'authors.html'><button>Back to the authors page</button></a>
+			<a href = '../index.html><button>Back to the main page</button></a>
+		</p>
+
 	</body>
 </html>
