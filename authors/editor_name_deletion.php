@@ -28,29 +28,15 @@
 			echo '<h3>Successfully connected to Mysql.</h3>';
 		}
 		
-		// assign submitted data to php variables
-		// $editorName = $_POST['editorName'];
-		// echo $editorName . " THIS IS IT";
-		// $editorCity = $_POST['editor_city'];
-		// echo $editorCity . " THIS IS IT";
+		// assign submitted data to php variable
+		$editorName = $_POST['editorName'];
 		
-		// perform and check deletion from the chosen table either by name or by city
-		if($_POST['editorName']) {
-			$editorName = $_POST['editorName'];
-			$sqlName = "DELETE FROM editor WHERE name = '$editorName'";
-		} elseif($_POST['editorCity']) {
-			$editorCity = $_POST['editor_city'];
-			$sqlCity = "DELETE FROM editor WHERE city = '$editorCity'";
-		} else {
-			echo "<h3>Incorrect choice</h3>";
-		}
-
+		// perform and check deletion from the chosen table by name
+		$sqlName = "DELETE FROM editor WHERE name = '$editorName'";
 		if(mysqli_query($conn, $sqlName)) {
 			echo "<h3>Data was successfully removed from the table <i>editor</i>.</h3>";
-		} elseif(mysqli_query($conn, $sqlCity)) {
-			echo "<h3>Data was successfully removed from the table <i>editor</i>.</h3>";
 		} else {
-			echo "<he>ERROR Could not remove data from the table <i>editor</i>.</h3>";
+			echo "<h3>ERROR Could not remove data from the table <i>editor</i>.</h3>";
 		}	    
 		?>
 		<br>

@@ -10,7 +10,7 @@
 			<?php
 				echo "<p>";
 				echo "<center>";
-				echo "<h2>In this page you can delete data for your comic books editors</h2>";
+				echo "<h2>In this page you can delete data <br> for your comic books editors</h2>";
 				echo "</center>";
 				echo "</p>";
 
@@ -30,20 +30,52 @@
 					echo "<h3>Successfully connected to MySQL.</h3>\n";
 				}
 
-				$sql = 'SELECT name FROM editor';
+				// query the editor table for all results and store the query
+				$sql = 'SELECT * FROM editor';
 				$result = mysqli_query($conn, $sql);
+
+				// query the editor table for editor names and store the query
+				$sqlName = 'SELECT name FROM editor';
+				$resultName = mysqli_query($conn, $sqlName);
+
+				// query the editor table for editor cities and store the query
+				$sqlCity = 'SELECT DISTINCT city FROM editor';
+				$resultCity = mysqli_query($conn, $sqlCity);
+
+				// check if editor table is empty
 				if($result) {
 					if(mysqli_num_rows($result) > 0) {
-						echo "<form method = 'post' action = 'editor_deletion.php'>";
-						echo "<select name = 'editor'>";
-						while ($row = mysqli_fetch_array($result)) {
-							echo "<option value = '$row[0]'>";
-							echo $row[0];
+						// if editor table is not empty create one form with two selects,
+						// one to select editor name, the other to select editor city
+						
+						
+						// editor name
+						echo "<p>";
+						echo "<form method = 'post' action = 'editor_name_deletion.php'>";
+						echo "<select name = 'editorName'>";
+						while($rowName = mysqli_fetch_array($resultName)) {
+							echo "<option value = '$rowName[0]'>";
+							echo $rowName[0];
 							echo "</option>";
 						}
 						echo "</select>";
-						echo "<input type = 'submit' value = 'submit choice'>";
+						echo "<input type = 'submit' value = 'submit name'>";
 						echo "</form>";
+						echo "</p>";
+
+						// editor city
+						echo "<p>";
+						echo "<form method = 'post' action = 'editor_city_deletion.php'>";
+						echo "<select name = 'editorCity'>";
+						while($rowCity = mysqli_fetch_array($resultCity)) {
+							echo "<option value = '$rowCity[0]'>";
+							echo $rowCity[0];
+							echo "</option>";
+						}
+						echo "</select>";
+						echo "<input type = 'submit' value = 'submit city'>";
+						echo "</form>";
+						echo "</p>";
 						
 						mysqli_free_result($result);
 					} else {
