@@ -55,8 +55,8 @@
 		?>
 		<br>
 		<p>
-			<a href = 'delete_editor.php'><button>Back to the delete editor page</button></a>
-			<a href = 'authors.html'><button>Back to the authors page</button></a>
+			<a href = '_c_delete_editor.php'><button>Back to the delete editor page</button></a>
+			<a href = '_a_authors.html'><button>Back to the authors page</button></a>
 			<a href = '../index.html><button>Back to the main page</button></a>
 		</p>
 

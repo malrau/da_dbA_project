@@ -95,7 +95,7 @@
 		<br>
 
 		<p>
-			<a href = 'authors.html'><button>Back to the authors page</button></a>
+			<a href = '_a_authors.html'><button>Back to the authors page</button></a>
 			<a href = '../index.html'><button>Back to the main page</button></a>
 		</p>
     	</body>

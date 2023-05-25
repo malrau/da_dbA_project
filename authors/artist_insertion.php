@@ -45,8 +45,8 @@
 
 	<br>
 	<p>
-	    <a href = 'insert_artist.html'><button>Back to the insert artist page</button></a>
-	    <a href = 'authors.html'><button>Back to the authors page</button></a>
+	    <a href = '_b_insert_artist.html'><button>Back to the insert artist page</button></a>
+	    <a href = '_a_authors.html'><button>Back to the authors page</button></a>
 	    <a href = '../index.html'><button>Back to the main page</button></a>
 	</p>
 
