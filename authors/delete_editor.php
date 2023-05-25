@@ -53,7 +53,7 @@
 						// editor name
 						echo "<p>";
 						echo "<h4>Delete editor by name</h4>";
-						echo "<form method = 'post' action = 'editor_name_deletion.php' id = 'submit name'>";
+						echo "<form method = 'post' action = 'editor_deletion_name.php' id = 'submit name'>";
 						echo "<select name = 'editorName'>";
 						while($rowName = mysqli_fetch_array($resultName)) {
 							echo "<option value = '$rowName[0]'>";
@@ -69,7 +69,7 @@
 						echo "<p>";
 						echo "<h4>Delete editor by city</h4>";
 						echo "<h5>Caution! This will remove all editors based in the city you inputted!</h5>";
-						echo "<form method = 'post' action = 'editor_city_deletion.php' id = 'submit city'>";
+						echo "<form method = 'post' action = 'editor_deletion_city.php' id = 'submit city'>";
 						echo "<select name = 'editorCity'>";
 						while($rowCity = mysqli_fetch_array($resultCity)) {
 							echo "<option value = '$rowCity[0]'>";
