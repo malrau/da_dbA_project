@@ -32,7 +32,7 @@
 // 				the above three lines are commented because I don't want 
 //				this message to be shown in the page where the query is set
 
-				// query the artist table for all results and store the query
+				// query the artist table for all results and store the query result
 				$sql = 'SELECT * FROM artist';
 				$result = mysqli_query($conn, $sql);
 
@@ -55,7 +55,6 @@
 						echo "<input type = 'submit' value = 'submit artist'>";
 						echo "</form>";
 						echo "</p>";
-						
 						mysqli_free_result($result);
 					} else {
 						echo "<h3>No matching records are found.</h3>";
@@ -64,7 +63,6 @@
 					echo "<h3></h3>ERROR. Cannot execute $sql.</h3>" . mysqli_error($conn);
 				}
 			?>
-
 		</p>
 
 		<br>
