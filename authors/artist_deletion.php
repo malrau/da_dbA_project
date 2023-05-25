@@ -39,7 +39,7 @@
 		// apply the substr(string, start, end) function to $artist by 
 		// exploiting the position of the space character
 		$firstName = substr($artist, 0, $spacePosition);
-		$lastName = substr($artist, $spacePosition + 1, -1);
+		$lastName = substr($artist, $spacePosition + 1);
 		
 		// perform and check deletion from the chosen table
 		$sql = "DELETE FROM artist WHERE firstName = '$firstName' AND lastName = '$lastName'";
