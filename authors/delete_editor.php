@@ -26,9 +26,10 @@
 				if(!$conn) {
 					echo "<h3>Cannot connect to MySQL.</h3>" . mysqli_connect_error();
 					exit;
-				} else {
-					echo "<h3>Successfully connected to MySQL.</h3>\n";
-				}
+				} // else {
+//					echo "<h3>Successfully connected to MySQL.</h3>\n";
+//				} 
+// the above three lines are commented because I don't want this message to be shown in the page where the query is set
 
 				// query the editor table for all results and store the query
 				$sql = 'SELECT * FROM editor';
@@ -51,7 +52,8 @@
 						
 						// editor name
 						echo "<p>";
-						echo "<form method = 'post' action = 'editor_name_deletion.php'>";
+						echo "<h4>Delete editor by name</h4>";
+						echo "<form method = 'post' action = 'editor_name_deletion.php' id = 'submit name'>";
 						echo "<select name = 'editorName'>";
 						while($rowName = mysqli_fetch_array($resultName)) {
 							echo "<option value = '$rowName[0]'>";
@@ -62,10 +64,12 @@
 						echo "<input type = 'submit' value = 'submit name'>";
 						echo "</form>";
 						echo "</p>";
-
+						echo "<br>";
 						// editor city
 						echo "<p>";
-						echo "<form method = 'post' action = 'editor_city_deletion.php'>";
+						echo "<h4>Delete editor by city</h4>";
+						echo "<h5>Caution! This will remove all editors based in the city you inputted!</h5>";
+						echo "<form method = 'post' action = 'editor_city_deletion.php' id = 'submit city'>";
 						echo "<select name = 'editorCity'>";
 						while($rowCity = mysqli_fetch_array($resultCity)) {
 							echo "<option value = '$rowCity[0]'>";
