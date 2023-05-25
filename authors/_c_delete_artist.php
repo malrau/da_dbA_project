@@ -29,26 +29,18 @@
 				} // else {
 //					echo "<h3>Successfully connected to MySQL.</h3>\n";
 //				} 
-// the above three lines are commented because I don't want this message to be shown in the page where the query is set
+// 				the above three lines are commented because I don't want 
+//				this message to be shown in the page where the query is set
 
 				// query the artist table for all results and store the query
 				$sql = 'SELECT * FROM artist';
 				$result = mysqli_query($conn, $sql);
 
-				// query the artist table for artist first names and store the query
-				$sqlFirst = 'SELECT firstName FROM artist';
-				$resultFirst = mysqli_query($conn, $sqlFirst);
-
-				// query the editor table for artist last names and store the query
-				$sqlLast = 'SELECT lastName FROM artist';
-				$resultLast = mysqli_query($conn, $sqlLast);
-
 				// check if artist table is empty
 				if($result) {
 					if(mysqli_num_rows($result) > 0) {
-						// if artist table is not empty create one form with two selects,
-						// one to select editor name, the other to select editor city
-
+						// if artist table is not empty create one form 
+						// to choose one of the artists already in the database to be removed
 						echo "<p>";
 						echo "<h4>Delete artist</h4>";
 						echo "<form method = 'post' action = 'artist_deletion.php' id = 'submit artist'>";
