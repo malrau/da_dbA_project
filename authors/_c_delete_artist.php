@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>
-			Webapp - editor deletion page
+			Webapp - artist deletion page
 		</title>
 	</head>
 
