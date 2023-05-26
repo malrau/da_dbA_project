@@ -44,6 +44,8 @@
 				// check if figure table is empty
 				if($result) {
 					if(mysqli_num_rows($result) > 0) {
+						// if editor table is not empty create a form to select
+						// the character by first name and last name
 						echo "<p>";
 						echo "<h4>Delete character</h4>";
 						echo "<form method = 'post' action = 'char_deletion.php' id = 'submit character'>";
@@ -60,10 +62,10 @@
 						echo "</p>";
 						mysqli_free_result($result);
 					} else {
-						echo "<h3>No matching records are found</h3>";
+						echo "<h3>No matching records are found.</h3>";
 					}
 				} else {
-					echo "<h3>ERROR. Cannot execute $sql.</h3>" . mysqli_error($conn);
+					echo "<h3>ERROR. Cannot execute $sql: </h3>" . mysqli_error($conn);
 				}
 			?>
 		</p>
