@@ -53,7 +53,7 @@
 		<br>
 
 		<p>
-			<a href = 'delete_char.php'><button>Back to the character deletion page</button></a>
+			<a href = '_c_delete_char.php'><button>Back to the character deletion page</button></a>
 			<a href = '_a_characters.html'><button>Back to the characters page</button></a>
 			<a href = '../index.html'><button>Back to the main page</button></a>
 		</p>
