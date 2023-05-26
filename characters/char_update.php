@@ -31,7 +31,26 @@
 			}
 
 			// assign submitted data to PHP variables
-			$character = $POST['character'];
+			$character = $_POST['character'];
+			echo $character;
+			echo strlen($character);
+			$spacePositions = array();
+			
+			$strLength = strlen($character);
+			$i = 0;
+			while($i < $strLength) {
+				$spacePosition = strpos($character, ' ') + $i;
+				array_push($spacePositions, $spacePosition);
+				$character = substr($character, $spacePosition + 1);
+				$i = $i + $spacePosition + 1;
+				$strLength = strlen($character);
+				echo $spacePosition . ' ';
+			}
+//			echo array_values($spacePositions);
+//			$spacePosition = strpos($character, ' ');
+//			$firstName = substr($character, 0, $spacePosition);
+//			$lastName = substr($character, $spacePosition + 1);
+//			echo $spacePosition, $firstName, $lastName;
 
 		?>
 	</body>
