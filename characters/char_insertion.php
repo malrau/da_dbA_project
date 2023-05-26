@@ -46,7 +46,7 @@
 	<br>
 	<p>
 	    <a href = 'insert_char.html'><button>Back to the insert character page</button></a>
-	    <a href = 'characters.html'><button>Back to the characters page</button></a>
+	    <a href = '_a_characters.html'><button>Back to the characters page</button></a>
 	    <a href = '../index.html'><button>Back to the main page</button></a>
 	</p>
     </body>

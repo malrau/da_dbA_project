@@ -20,10 +20,10 @@
 				$config = parse_ini_file('../config.ini');
 				// retrieve parameters to access MySQL from associative array and
 				// assign them to PHP variables
-				$servername = 'servername';
-				$username = 'username';
-				$password = 'password';
-				$dbname = 'dbname';
+				$servername = $config['servername'];
+				$username = $config['username'];
+				$password = $config['password'];
+				$dbname = $config['dbname'];
 				
 				// create and check connection to MySQL
 				$conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -42,11 +42,11 @@
 				$result = mysqli_query($conn, $sql);
 				
 				// check if figure table is empty
-				if(result) {
-					if(mysqli_fetch_row($result) > 0) {
+				if($result) {
+					if(mysqli_num_rows($result) > 0) {
 						echo "<p>";
 						echo "<h4>Delete character</h4>";
-						echo "<form method = 'post' action = 'char_deletion.php' id = 'submit character'";
+						echo "<form method = 'post' action = 'char_deletion.php' id = 'submit character'>";
 						echo "<select name = 'character'>";
 						while($row = mysqli_fetch_array($result)) {
 							$character = $row[0] . ' ' . $row[1];
@@ -61,6 +61,7 @@
 						mysqli_free_result($result);
 					} else {
 						echo "<h3>No matching records are found</h3>";
+					}
 				} else {
 					echo "<h3>ERROR. Cannot execute $sql.</h3>" . mysqli_error($conn);
 				}
