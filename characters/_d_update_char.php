@@ -46,13 +46,13 @@
 						// if figure table is not empty create a form to
 
 						// 1) select the character
-						echo "<h4>Update character</h4>";
-						echo "<form method = 'post' action = 'char_update.php' id = 'submit character'>";
+						echo "<h4>Check the character data you want to update:</h4>";
+						echo "<form method = 'post' action = 'char_update.php'>";
 						echo "<p>";
 						echo "<select name = 'character'>";
 						while($row = mysqli_fetch_array($result)) {
 							$character = $row[0] . ' ' . $row[1] . ' ' . '(' . $row[2] . ')';
-							echo "<option value = '$character'>";
+							echo "<option value = '$row[0] $row[1]'>";
 							echo $character;
 							echo "</option>";
 						}
@@ -63,9 +63,9 @@
 						// 2) choose the attribute to update
 						echo "<p>";
 						echo "Choose the attribute you want to update: ";
-						echo "<input type = 'radio' name = 'first name'>first name; ";
-						echo "<input type = 'radio' name = 'last name'>last name; ";
-						echo "<input type = 'radio' name = 'preudonym'>pseudonym";
+						echo "<input type = 'radio' name = 'attribute' value = 'firstName'>first name; ";
+						echo "<input type = 'radio' name = 'attribute' value = 'lastName'>last name; ";
+						echo "<input type = 'radio' name = 'attribute' value = 'pseudonym'>pseudonym";
 						echo "</p>";
 
 						// 3) indicate old and new value for the chosen attribute

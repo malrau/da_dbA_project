@@ -31,27 +31,36 @@
 			}
 
 			// assign submitted data to PHP variables
-			$character = $_POST['character'];
-			echo $character;
-			echo strlen($character);
-			$spacePositions = array();
-			
-			$strLength = strlen($character);
-			$i = 0;
-			while($i < $strLength) {
-				$spacePosition = strpos($character, ' ') + $i;
-				array_push($spacePositions, $spacePosition);
-				$character = substr($character, $spacePosition + 1);
-				$i = $i + $spacePosition + 1;
-				$strLength = strlen($character);
-				echo $spacePosition . ' ';
-			}
-//			echo array_values($spacePositions);
-//			$spacePosition = strpos($character, ' ');
-//			$firstName = substr($character, 0, $spacePosition);
-//			$lastName = substr($character, $spacePosition + 1);
-//			echo $spacePosition, $firstName, $lastName;
+			$character = $_POST['character']; // VARIABLE NOT USED
+			$attribute = $_POST['attribute'];
+			$old = $_POST['old'];
+			$new = $_POST['new'];
 
+			// retrieve position of the space character to separate first 
+			// name and last name in $character, by applying the 
+			// strpos(string, pattern) php function
+			$spacePosition = strpos($character, ' ');  // VARIABLE NOT USED
+			
+			// apply the substr(string, start, end) function to $character by 
+			// exploiting the position of the space character
+			$firstName = substr($character, 0, $spacePosition);  // VARIABLE NOT USED
+			$lastName = substr($character, $spacePosition + 1);  // VARIABLE NOT USED
+			
+			// perform and check update on the chosen table
+			$sql = "UPDATE figure SET $attribute = '$new' WHERE $attribute = '$old'";
+			if(mysqli_query($conn, $sql)) {
+				echo "<h3>Data from table <i>figure</i> was successfully updated.</h3>";
+			} else {
+				echo "<h3>Could not update data from table <i>figure</i>.</h3>";
+			}
 		?>
+		
+		<br>
+		
+		<p>
+			<a href = '_d_update_char.php'><button>Back to the update character page</button></a>
+			<a href = '_a_characters.html'><button>Back to the characters page</button></a>
+			<a href = '../index.html'><button>Back to the main page</button></a>
+		</p>
 	</body>
 </html>
