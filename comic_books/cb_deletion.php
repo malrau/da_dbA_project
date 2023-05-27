@@ -45,8 +45,8 @@
 
 	<br>
 	<p>
-	    <a href = 'delete_cb.html'><button>Back to the delete comic book page</button></a>
-	    <a href = 'comic_books.html'><button>Back to the comic books page</button></a>
+	    <a href = '_c_delete_cb.html'><button>Back to the delete comic book page</button></a>
+	    <a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
 	    <a href = '../index.html'><button>Back to the main page</button></a>
 	</p>
     </body>

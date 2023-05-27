@@ -125,8 +125,8 @@
 
 	<br>
 	<p>
-	    <a href = 'query_cb.html'><button>Back to the comic books query page</button></a>
-	    <a href = 'comic_books.html'><button>Back to the comic books page</button></a>
+	    <a href = '_e_query_cb.html'><button>Back to the comic books query page</button></a>
+	    <a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
 	    <a href = '../index.html'><button>Back to the main page</button></a>
 	</p>
 
