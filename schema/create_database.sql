@@ -10,22 +10,23 @@ CREATE TABLE figure(
     );
     
 CREATE TABLE comic_book(
+    cbID INT AUTO_INCREMENT,
     series VARCHAR(30),
     issueNumber INT,
     coverTitle VARCHAR(50),
-    PRIMARY KEY(series, issueNumber)
+    UNIQUE(series, issueNumber),
+    PRIMARY KEY(cbID)
     );
 
 CREATE TABLE starring(
-    comic_book VARCHAR(50),
-    issue INT,
+    comic_book INT,
     figure VARCHAR(20),
     role VARCHAR(12),
     city VARCHAR(30),
     state VARCHAR(30),
-    PRIMARY KEY(comic_book, issue, figure),
-    FOREIGN KEY(comic_book, issue) 
-        REFERENCES comic_book(series, issueNumber)
+    PRIMARY KEY(comic_book, figure),
+    FOREIGN KEY(comic_book) 
+        REFERENCES comic_book(cbID)
         ON DELETE no action
         ON UPDATE cascade,
     FOREIGN KEY(figure)
@@ -42,45 +43,51 @@ CREATE TABLE editor(
 
 CREATE TABLE publishing(
     editor VARCHAR(30),
-    comic_book VARCHAR(30),
-    issue INT,
-    PRIMARY KEY(editor, comic_book, issue),
+    comic_book INT,
+    PRIMARY KEY(editor, comic_book),
     FOREIGN KEY(editor)
         REFERENCES editor(name)
         ON DELETE no action
         ON UPDATE cascade,
-    FOREIGN KEY(comic_book, issue)
-        REFERENCES comic_book(series, issueNumber)
+    FOREIGN KEY(comic_book)
+        REFERENCES comic_book(cbID)
         ON DELETE no action
         ON UPDATE cascade
     );
 
 CREATE TABLE writer(
+    writerID INT AUTO_INCREMENT,
     firstName VARCHAR(30),
     lastName VARCHAR(30),
     pseudonym VARCHAR(30),
-    PRIMARY KEY(firstName, lastName)
+    UNIQUE(firstName, lastName),
+    PRIMARY KEY(writerID)
     );
 
 CREATE TABLE artist(
+    artistID INT AUTO_INCREMENT,
     firstName VARCHAR(30),
     lastName VARCHAR(30),
     pseudonym VARCHAR(30),
-    PRIMARY KEY(firstName, lastName)
+    UNIQUE(firstName, lastName),
+    PRIMARY KEY(artistID)
     );
 
 CREATE TABLE authoring(
-    writerFirstName VARCHAR(30),
-    writerLastName VARCHAR(30),
-    artistFirstName VARCHAR(30),
-    artistLastName VARCHAR(30),
-    PRIMARY KEY(writerFirstName, writerLastName, artistFirstName, artistLastName),
-    FOREIGN KEY(writerFirstName, writerLastName)
-        REFERENCES writer(firstName, lastName)
+    writer INT,
+    artist INT,
+    comic_book INT,
+    PRIMARY KEY(writer, artist, comic_book),
+    FOREIGN KEY(writer)
+        REFERENCES writer(writerID)
         ON DELETE no action
         ON UPDATE cascade,
-    FOREIGN KEY(artistFirstName, artistLastName)
-        REFERENCES artist(firstName, lastName)
+    FOREIGN KEY(artist)
+        REFERENCES artist(artistID)
         ON DELETE no action
-        ON UPDATE cascade
+        ON UPDATE cascade,
+    FOREIGN KEY(comic_book)
+		REFERENCES comic_book(cbID)
+		ON DELETE no action
+		ON UPDATE cascade
     );
