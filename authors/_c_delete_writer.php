@@ -33,7 +33,7 @@
 //				this message to be shown in the page where the query is set
 
 				// query the writer table for all results and store the query
-				$sql = 'SELECT * FROM writer';
+				$sql = 'SELECT firstName, lastName, pseudonym FROM writer';
 				$result = mysqli_query($conn, $sql);
 
 				// check if writer table is empty

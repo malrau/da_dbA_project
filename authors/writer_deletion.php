@@ -30,7 +30,6 @@
 		
 		// assign submitted data (writer's first and last names) to php variable
 		$writer = $_POST['writer'];
-		echo $writer;
 
 		// retrieve position of the space character to separate first 
 		// name and last name in $writer, by applying the 
@@ -40,9 +39,7 @@
 		// apply the substr(string, start, end) function to $writer by 
 		// exploiting the position of the space character
 		$firstName = substr($writer, 0, $spacePosition);
-		echo $firstName . 'STOP';
 		$lastName = substr($writer, $spacePosition + 1);
-		echo $lastName;
 		
 		// perform and check deletion from the chosen table
 		$sql = "DELETE FROM writer WHERE firstName = '$firstName' AND lastName = '$lastName'";

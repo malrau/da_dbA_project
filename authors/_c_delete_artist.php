@@ -33,7 +33,7 @@
 //				this message to be shown in the page where the query is set
 
 				// query the artist table for all results and store the query result
-				$sql = 'SELECT * FROM artist';
+				$sql = 'SELECT firstName, lastName, pseudonym FROM artist';
 				$result = mysqli_query($conn, $sql);
 
 				// check if artist table is empty
