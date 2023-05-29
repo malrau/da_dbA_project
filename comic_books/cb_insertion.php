@@ -7,6 +7,9 @@
 
     <body>
 		<?php
+			# exploit script to perform MySQL connection (commented, at the moment)
+			# include('../connect.php');
+
 			// the following line allows me to report connection errors,
 			// otherwise a blank page would occur in case of errors
 			mysqli_report(MYSQLI_REPORT_ERROR);
@@ -61,17 +64,16 @@
 			echo"</center>";
 			echo"</p>";
 			
+			# form start
+			echo "<form method = 'post' action = 'starring_insertion.php'>";
+
 		   /**********************************
 			*** STEP 2: FEED COMIC BOOK ID ***
 			**********************************/
 			echo "<br>";
+			$sqlCb = "SELECT * FROM comic_book WHERE cbID = (SELECT MAX(cbID) FROM comic_book)";
 			/* I query the 'comic_book' table for the latest insertion
 			   the one where the cbID is the largest */
-			$sqlCb = "SELECT * FROM comic_book WHERE cbID = (SELECT MAX(cbID) FROM comic_book)";
-			
-			
-			echo "<form method = 'post' action = 'starring_insertion.php'>";
-			
 			if($resultCb = mysqli_query($conn, $sqlCb)) {
 				if(mysqli_num_rows($resultCb) > 0) {
 					/* if comic_book table is not empty create a form to
@@ -86,6 +88,7 @@
 						echo "<br>";
 					}
 					echo "</p>";
+					mysqli_free_result($resultCb);
 				} else {
 					echo "<h3>No matching comic books are found.</h3>";
 				}
@@ -94,7 +97,33 @@
 			}
 			
 		   /**********************************
-			***  STEP 3: FEED  CHARACTERS  ***
+			***  STEP 3: FEED  THE EDITOR  ***
+			**********************************/
+			$sqlEditor = "SELECT name FROM editor";
+			/* I also query the 'editor' table for editors already in the
+			   database, so to associate it to the latest comic book inserted */
+			if($resultEditor = mysqli_query($conn, $sqlEditor)) {
+				if(mysqli_num_rows($resultEditor) > 0) {
+					echo "<p>";
+					echo "<h4>Select its editor: </h4>";
+					echo "<select name = 'editor'>";
+					while($rowEditor = mysqli_fetch_array($resultEditor)) {
+						echo "<option value = '$rowEditor[0]'>";
+						echo $rowEditor[0];
+						echo "</option>";
+					}
+					echo"</select>";
+					echo "</p>";
+					mysqli_free_result($resultEditor);
+				} else {
+					echo "<h3>No matching records are found.</h3>";
+				}
+			} else {
+				echo "<h3>ERROR. Cannot execute $sqlEditor: </h3>" . mysqli_error($conn);
+			}
+			
+		   /**********************************
+			***  STEP 4: FEED  CHARACTERS  ***
 			**********************************/
 			echo "<br>";
 			/* I also query the 'figure' table for the characters in my
@@ -123,6 +152,7 @@
 						echo "<br>";
 					}
 					echo "</p>";
+					mysqli_free_result($resultFigure);
 				} else {
 					echo "<h3>No matching records are found.</h3>";
 				}
@@ -131,7 +161,7 @@
 			}
 
 		   /**********************************
-			*** STEP 4: FEED LOCATION DATA ***
+			*** STEP 5: FEED LOCATION DATA ***
 			**********************************/
 			echo "<br>";
 			echo "<p>";
@@ -146,8 +176,9 @@
 			echo "<input type = 'submit' value = 'submit data'>";
 			echo "<input type = 'reset' value = 'reset fields'>";
 			
+			# form end
 			echo "</form>";
-			
+						
 		?>
 
 		<br>
