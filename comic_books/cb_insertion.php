@@ -29,9 +29,9 @@
 				echo "<h3>Successfully connected to MySQL.</h3>";
 			}
 
-			// **********************************
-			// *** STEP 1: COMPLETE INSERTION ***
-			// **********************************
+		   /**********************************
+			*** STEP 1: COMPLETE INSERTION ***
+			**********************************/
 			// assign data to PHP variables
 			$series = $_POST['insert_series'];
 			$issue = $_POST['insert_issue'];
@@ -44,11 +44,14 @@
 				echo "<h3>ERROR! Could not insert data into the table <i>comic_book</i>: </h3>" . mysqli_error($conn);
 			}
 
-			// now that I have inserted the comic book data, the comic book 
-			// ID has been created and I need to feed it to the 'starring'
-			// table together with the character pseudonym, which is the
-			// primary key of the table figure (which stores info about
-			// the characters in my comic books collection)
+			/*  now that I have inserted the comic book data, the comic book 
+				ID has been created and I need to feed it to the 'starring'
+				table together with the character pseudonym, which is the
+				primary key of the table figure (which stores info about
+				the characters in my comic books collection). The 'starring'
+				table also needs city and country attributes. I collect all
+				of this data in different form control elements within the
+				same form */
 			
 			echo "<br>";
 			echo "<p>";
@@ -58,21 +61,23 @@
 			echo"</center>";
 			echo"</p>";
 			
-			// **********************************
-			// *** STEP 2: FEED COMIC BOOK ID ***
-			// **********************************
+		   /**********************************
+			*** STEP 2: FEED COMIC BOOK ID ***
+			**********************************/
 			echo "<br>";
-			// I query the 'comic_book' table for the latest insertion
-			// the one where the cbID is the largest
+			/* I query the 'comic_book' table for the latest insertion
+			   the one where the cbID is the largest */
 			$sqlCb = "SELECT * FROM comic_book WHERE cbID = (SELECT MAX(cbID) FROM comic_book)";
-			// I retrieve data from the query and simply print a message
+			
+			
+			echo "<form method = 'post' action = 'starring_insertion.php'>";
+			
 			if($resultCb = mysqli_query($conn, $sqlCb)) {
 				if(mysqli_num_rows($resultCb) > 0) {
-					// if comic_book table is not empty create a form to
-					// show the latest comic book issue inserted
+					/* if comic_book table is not empty create a form to
+					   show the latest comic book issue inserted */
 					echo "<p>";
 					echo "<h4>The latest comic book inserted was: </h4>";
-					echo "<form method = 'post' action = 'starring_insertion.php' id = 'submit comic book'>";
 					while($rowCb = mysqli_fetch_array($resultCb)) {
 						echo "<input type = 'checkbox' name = 'cbID' value = $rowCb[0]>";
 						echo " ";
@@ -80,10 +85,6 @@
 						echo "<i>$rowCb[3]</i>";
 						echo "<br>";
 					}
-					echo "<br>";
-					echo "<input type = 'submit' value = 'submit comic book'>";
-					echo "<input type = 'reset' value = 'reset fields'>";
-					echo "</form>";
 					echo "</p>";
 				} else {
 					echo "<h3>No matching comic books are found.</h3>";
@@ -92,27 +93,26 @@
 				echo "<h3>ERROR. Cannot execute $sqlCb: </h3>" . mysqli_error($conn);
 			}
 			
-			// **********************************
-			// ***  STEP 3: FEED  CHARACTERS  ***
-			// **********************************
+		   /**********************************
+			***  STEP 3: FEED  CHARACTERS  ***
+			**********************************/
 			echo "<br>";
-			// I also query the 'figure' table for the characters in my
-			// database, so to choose those that appear in the latest one
-			// inserted
+			/* I also query the 'figure' table for the characters in my
+			   database, so to choose those that appear in the latest one
+			   inserted */
 			$sqlFigure = "SELECT * FROM figure";
-			// I retrieve data from the query and build a form with a
-			// checkbox control element
+			/* I retrieve data from the query and build a form with a
+			   checkbox control element */
 			if($resultFigure = mysqli_query($conn, $sqlFigure)) {
 				if(mysqli_num_rows($resultFigure) > 0) {
 					echo "<p>";
 					echo "<h4>Select the characters appearing in the comic book: </h4>";
-					echo "<form method = 'post' action = 'starring_insertion.php' id = 'submit character'>";
 					while($rowFigure = mysqli_fetch_array($resultFigure)) {
 						echo "<input type = 'checkbox' name = '$rowFigure[2]', value = '$rowFigure[2]'>";
-						// I must refer to the figure table schema, where I have
-						// character first name as first attribute, last name as
-						// second and pseudonym (the primary key) as third
-						// I must pass the primary key to the table starring
+						/* I must refer to the figure table schema, where I have
+						   character first name as first attribute, last name as
+						   second and pseudonym (the primary key) as third
+						   I must pass the primary key to the table starring */
 						echo " ";
 						echo $rowFigure[2] . ' ';
 						echo " - Input role: ";
@@ -121,10 +121,6 @@
 						echo "<input type = 'text' name = '$role'>";
 						echo "<br>";
 					}
-					echo "<br>";
-					echo "<input type = 'submit' value = 'submit character'>";
-					echo "<input type = 'reset' value = 'reset fields'>";
-					echo "</form>";
 					echo "</p>";
 				} else {
 					echo "<h3>No matching records are found.</h3>";
@@ -133,23 +129,23 @@
 				echo "<h3>ERROR. Could not perform $sqlFigure: </h3>" . mysqli_error($conn);
 			}
 
-			// **********************************
-			// *** STEP 4: FEED LOCATION DATA ***
-			// **********************************
+		   /**********************************
+			*** STEP 4: FEED LOCATION DATA ***
+			**********************************/
 			echo "<br>";
 			echo "<p>";
 			echo "<h4>Input data about where the action takes place: </h4>";
-			echo "<form method = 'post' action = 'starring_insertion.php' id = 'submit location'>";
 			echo "Input the city (or cities) where the action takes place: ";
 			echo "<input type = 'text' name = 'city'>";
 			echo "<br>";
 			echo "Input the country (or countries) where the action takes place: ";
 			echo "<input type = 'text' name = 'country'>";
-			echo "<br><br>";
-			echo "<input type = 'submit' value = 'submit location'>";
-			echo "<input type = 'reset' value = 'reset fields'>";
-			echo "</form>";
 			echo "</p>";
+			echo "<br><br>";
+			echo "<input type = 'submit' value = 'submit data'>";
+			echo "<input type = 'reset' value = 'reset fields'>";
+			
+			echo "</form>";
 			
 		?>
 
