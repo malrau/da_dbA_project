@@ -44,8 +44,8 @@
 				// check if figure table is empty
 				if($result) {
 					if(mysqli_num_rows($result) > 0) {
-						// if editor table is not empty create a form to select
-						// the character by first name and last name
+						// if figure table is not empty create a form to
+						// select the character by first name and last name
 						echo "<p>";
 						echo "<h4>Delete character</h4>";
 						echo "<form method = 'post' action = 'char_deletion.php' id = 'submit character'>";
