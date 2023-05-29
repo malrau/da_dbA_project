@@ -34,9 +34,9 @@
 			
 			// assign data to PHP variables
 			$cbID = $_POST['cbID'];
-			#echo $cbID;
 			$city = $_POST['city'];
 			$country = $_POST['country'];
+			#echo $cbID;
 			#echo $city;
 			#echo $country;
 
@@ -46,14 +46,14 @@
 					/*  note that $pseudoKey, within the $_POST array is
 						key and value at the same time */
 					$pseudonym = $_POST[$pseudoKey];
-					#echo "PSEUDO " . $pseudonym;
+					# echo "PSEUDO " . $pseudonym;
 					$tempRole = substr($key, $dashPosition + 1);
 					/*	I reconstruct the role key to retrieve the corresponding
 						value from the $_POST array */
 					$figureRole = $_POST[$pseudoKey . '-' . $tempRole];
-					#echo "ROLE " . $figureRole;
+					# echo "ROLE " . $figureRole;
 					# perform insertion into 'starring' for each character
-					$sql = "INSERT INTO starring(comic_book, figure, figureRole, city, country) VALUES('$cbID', '$pseudonym', '$figureRole', '$city', '$country')";
+					$sql = "INSERT INTO starring(comic_bookID, figure, figureRole, city, country) VALUES('$cbID', '$pseudonym', '$figureRole', '$city', '$country')";
 					if(mysqli_query($conn, $sql)) {
 						echo "<h3>Data was successfully inserted into the <i>starring</i> table.</h3>";
 					} else {

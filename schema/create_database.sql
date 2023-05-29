@@ -19,13 +19,13 @@ CREATE TABLE comic_book(
     );
 
 CREATE TABLE starring(
-    comic_book INT,
+    comic_bookID INT,
     figure VARCHAR(20),
-    role VARCHAR(12),
+    figureRole VARCHAR(20),
     city VARCHAR(30),
     country VARCHAR(30),
-    PRIMARY KEY(comic_book, figure),
-    FOREIGN KEY(comic_book) 
+    PRIMARY KEY(comic_bookID, figure),
+    FOREIGN KEY(comic_bookID) 
         REFERENCES comic_book(cbID)
         ON DELETE no action
         ON UPDATE cascade,
@@ -43,13 +43,13 @@ CREATE TABLE editor(
 
 CREATE TABLE publishing(
     editor VARCHAR(30),
-    comic_book INT,
-    PRIMARY KEY(editor, comic_book),
+    comic_bookID INT,
+    PRIMARY KEY(editor, comic_bookID),
     FOREIGN KEY(editor)
         REFERENCES editor(name)
         ON DELETE no action
         ON UPDATE cascade,
-    FOREIGN KEY(comic_book)
+    FOREIGN KEY(comic_bookID)
         REFERENCES comic_book(cbID)
         ON DELETE no action
         ON UPDATE cascade
@@ -74,19 +74,19 @@ CREATE TABLE artist(
     );
 
 CREATE TABLE authoring(
-    writer INT,
-    artist INT,
-    comic_book INT,
-    PRIMARY KEY(writer, artist, comic_book),
-    FOREIGN KEY(writer)
+    writerID INT,
+    artistID INT,
+    comic_bookID INT,
+    PRIMARY KEY(writerID, artistID, comic_bookID),
+    FOREIGN KEY(writerID)
         REFERENCES writer(writerID)
         ON DELETE no action
         ON UPDATE cascade,
-    FOREIGN KEY(artist)
+    FOREIGN KEY(artistID)
         REFERENCES artist(artistID)
         ON DELETE no action
         ON UPDATE cascade,
-    FOREIGN KEY(comic_book)
+    FOREIGN KEY(comic_bookID)
 		REFERENCES comic_book(cbID)
 		ON DELETE no action
 		ON UPDATE cascade
