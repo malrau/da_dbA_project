@@ -23,7 +23,7 @@ CREATE TABLE starring(
     figure VARCHAR(20),
     role VARCHAR(12),
     city VARCHAR(30),
-    state VARCHAR(30),
+    country VARCHAR(30),
     PRIMARY KEY(comic_book, figure),
     FOREIGN KEY(comic_book) 
         REFERENCES comic_book(cbID)
