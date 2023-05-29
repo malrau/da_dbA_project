@@ -117,7 +117,8 @@
 						echo $rowFigure[2] . ' ';
 						echo " - Input role: ";
 						// here I set a different name for each textbox generated
-						$role = $rowFigure[2] . 'role';
+						// but I attach the same pattern '-role'
+						$role = $rowFigure[2] . '-role';
 						echo "<input type = 'text' name = '$role'>";
 						echo "<br>";
 					}
