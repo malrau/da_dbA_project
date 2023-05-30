@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>
-			Inserted publisher data
+			Insert now publisher data
 		</title>
 	</head>
 
@@ -10,8 +10,9 @@
 			# exploit script to perform MySQL connection
 			include('../connect.php');
 			
-			/**********************************
+			/*********************************
 			*** STEP 1: COMPLETE INSERTION ***
+			***** FROM _b_insert_cb.html *****
 			**********************************/
 			// assign data to PHP variables
 			$series = $_POST['insert_series'];
@@ -24,7 +25,13 @@
 			} else {
 				echo "<h3>ERROR! Could not insert data into the table <i>comic_book</i>: </h3>" . mysqli_error($conn);
 			}
-			
+
+			/*  now that I have inserted the comic book data, the comic book 
+				ID has been created and I need to feed it to the 'authoring'
+				table together with the editor name, which is the primary
+				key of the table 'editor' (which stores info about the
+				editor of my comic books collection). */
+
 			/* Introduce what you have to do in the current page, after
 			   the comic book insertion */
 			echo "<br>";
@@ -35,8 +42,8 @@
 			echo "</center>";
 			echo "</p>";
 
-			# form start
-			echo "<form method = 'post' action = 'authoring_insertion.php'>";
+			# FORM START
+			echo "<form method = 'post' action = 'rel_authoring_insertion.php'>";
 		   
 		   /**********************************
 			*** STEP 2: FEED COMIC BOOK ID ***
@@ -52,7 +59,7 @@
 					echo "<p>";
 					echo "<h4>The latest comic book inserted was: </h4>";
 					while($rowCb = mysqli_fetch_array($resultCb)) {
-						echo "<input type = 'checkbox' name = 'cbID' value = $rowCb[0] checked>";
+						echo "<input type = 'checkbox' name = 'comic_bookID' value = $rowCb[0] checked>";
 						echo " ";
 						echo $rowCb[1] . ' ' . 'N.' . $rowCb[2] . ',' . ' ';
 						echo "<i>$rowCb[3]</i>";
@@ -96,9 +103,8 @@
 			echo "<input type = 'submit' value = 'submit editor'>";
 			echo "<input type = 'reset' value = 'reset fields'>";
 
-			# form end
+			# FORM END
 			echo "</form>";
-
 		?>
 		
 		<br>
