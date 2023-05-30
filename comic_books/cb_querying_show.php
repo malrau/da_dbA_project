@@ -1,37 +1,18 @@
 <html>
     <head>
-	<title>
-	    Query comic book collection
-	</title>
+		<title>
+			Query comic book collection
+		</title>
     </head>
 
     <body>
-	<?php
-	    // the following line allows me to report connection errors,
-	    // otherwise a blank page would occur in case of errors
-	    mysqli_report(MYSQLI_REPORT_ERROR);
+		<?php
+			# exploit script to perform MySQL connection
+			include('../connect.php');
 
-		// return settings from configuration file into an associative array
-	    $config = parse_ini_file('../config.ini');
-	    // get parameters to access MySQL from associative array and
-	    // assign them to PHP variables
-	    $servername = $config['servername'];
-	    $username = $config['username'];
-	    $password = $config['password'];
-	    $dbname = $config['dbname'];
-
-	    // create and check connection to MySQL
-	    $conn = mysqli_connect($servername, $username, $password, $dbname);
-	    if(!$conn) {
-		echo "<h3>Cannot connect to MySQL: </h3>" . mysqli_connect_error();
-		exit;
-	    } else {
-		echo "<h3>Successfully connected to MySQL.</h3>";
-	    }
-
-	    // assign data to PHP variables
-	    if(!$_POST['count'] and !$_POST['collection']) {
-		echo "<br><h3>No choice taken</h3>";
+			# assign data to PHP variables
+			if(!$_POST['count'] and !$_POST['collection']) {
+			echo "<br><h3>No choice taken</h3>";
 		exit;
 	    } else {
 		if($_POST['count']) {

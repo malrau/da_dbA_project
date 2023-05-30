@@ -7,7 +7,7 @@
 	
 	<body>
 		<?php
-			# exploit script to perform MySQL connection (commented, at the moment)
+			# exploit script to perform MySQL connection
 			include('../connect.php');
 			
 			// assign data to PHP variables

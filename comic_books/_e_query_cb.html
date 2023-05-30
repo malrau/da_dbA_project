@@ -1,43 +1,51 @@
 <html>
     <head>
-	<title>
-	    Webapp - comic book queries page
-	</title>
+		<title>
+			Webapp - comic book queries page
+		</title>
     </head>
 
     <body>
-	<p>
-	    <center>
-		<h2>In this page you can run a few preset queries <br> for your comic books collection</h2>
-	    </center>
-	</p>
+		<p>
+			<center>
+			<h2>In this page you can run a few preset queries <br> for your comic books collection</h2>
+			</center>
+		</p>
 
-	<br>
-	<form method = 'post' action = 'cb_querying.php'>
+		<br>
+		<!-- The first form shows a list of comic books based on the parameters passed -->
+		<form method = 'post' action = 'cb_querying_show.php' id = 'show list'>
+		<p>
+			Show the comic books you own for the chosen series
+			<input type = 'radio' name = 'collection' value = 'all'>whole collection
+			<input type = 'radio' name = 'collection' value = 'not_all'>choose series <input type = 'text' name = 'chosen_series_coll'>
+		</p>
+		<p>
+			<input type = 'submit' value = 'show list'>
+			<input type = 'reset' value = 'reset fields'>
+		</p>
+		</form>
+		
+		<br>
+		<!-- The second form counts the comic books based on the parameters passed -->
+		<form method = 'post' action = 'cb_querying_count.php' id = 'show count'>
+		<p>
+			Count the number of comic books in your collection or in a specific series
+			<input type = 'radio' name = 'count' value = 'all'>whole collection
+			<input type = 'radio' name = 'count' value = 'not_all'>choose series <input type = 'text' name = 'chosen_series_count'>
+		</p>
+		<p>
+			<input type = 'submit' value = 'show count'>
+			<input type = 'reset' value = 'reset fields'>
+		</p>
+		</form>
 
-	<p>
-	    Count the number of comic books in your collection or in a specific series
-		<input type = 'radio' name = 'count' value = 'all'>whole collection
-		<input type = 'radio' name = 'count' value = 'not_all'>choose series <input type = 'text' name = 'chosen_series_count'>
-	</p>
+		<br>
 
-	<p>
-	    Show the comic books you own for the chosen series
-		<input type = 'radio' name = 'collection' value = 'all'>whole collection
-		<input type = 'radio' name = 'collection' value = 'not_all'>choose series <input type = 'text' name = 'chosen_series_coll'>
-	</p>
-
-	<p>
-	    <input type = 'submit' value = 'submit query'>
-	    <input type = 'reset' value = 'reset fields'>
-	</p>
-
-	</form>
-
-	<p>
-	    <a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
-	    <a href = '..\index.html'><button>Back to the main page</button></a>
-	</p>
+		<p>
+			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
+			<a href = '..\index.html'><button>Back to the main page</button></a>
+		</p>
 
     </body>
 </html>
