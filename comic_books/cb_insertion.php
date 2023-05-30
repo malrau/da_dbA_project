@@ -81,7 +81,7 @@
 					echo "<p>";
 					echo "<h4>The latest comic book inserted was: </h4>";
 					while($rowCb = mysqli_fetch_array($resultCb)) {
-						echo "<input type = 'checkbox' name = 'cbID' value = $rowCb[0]>";
+						echo "<input type = 'checkbox' name = 'cbID' value = $rowCb[0] checked>";
 						echo " ";
 						echo $rowCb[1] . ' ' . 'N.' . $rowCb[2] . ',' . ' ';
 						echo "<i>$rowCb[3]</i>";
@@ -97,33 +97,7 @@
 			}
 			
 		   /**********************************
-			***  STEP 3: FEED  THE EDITOR  ***
-			**********************************/
-			$sqlEditor = "SELECT name FROM editor";
-			/* I also query the 'editor' table for editors already in the
-			   database, so to associate it to the latest comic book inserted */
-			if($resultEditor = mysqli_query($conn, $sqlEditor)) {
-				if(mysqli_num_rows($resultEditor) > 0) {
-					echo "<p>";
-					echo "<h4>Select its editor: </h4>";
-					echo "<select name = 'editor'>";
-					while($rowEditor = mysqli_fetch_array($resultEditor)) {
-						echo "<option value = '$rowEditor[0]'>";
-						echo $rowEditor[0];
-						echo "</option>";
-					}
-					echo"</select>";
-					echo "</p>";
-					mysqli_free_result($resultEditor);
-				} else {
-					echo "<h3>No matching records are found.</h3>";
-				}
-			} else {
-				echo "<h3>ERROR. Cannot execute $sqlEditor: </h3>" . mysqli_error($conn);
-			}
-			
-		   /**********************************
-			***  STEP 4: FEED  CHARACTERS  ***
+			***  STEP 3: FEED  CHARACTERS  ***
 			**********************************/
 			echo "<br>";
 			/* I also query the 'figure' table for the characters in my
@@ -161,7 +135,7 @@
 			}
 
 		   /**********************************
-			*** STEP 5: FEED LOCATION DATA ***
+			*** STEP 4: FEED LOCATION DATA ***
 			**********************************/
 			echo "<br>";
 			echo "<p>";
