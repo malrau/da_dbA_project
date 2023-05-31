@@ -10,7 +10,7 @@
 			# exploit script to perform MySQL connection
 			include('../connect.php');
 			
-			#echo $_POST['count'];
+			echo "<br>";
 
 			# assign data and queriy to PHP variables
 			if(!isset($_POST['count'])) {
@@ -19,32 +19,18 @@
 				echo "<a href = '_e_query_cb.html'><button>Back to the query comic books page</button></a>";
 				echo "</p>";
 			} elseif($_POST['count'] == 'all') {
-				$sql = "SELECT * FROM comic_book";
-			} elseif($_POST['count'] == 'not_all') {
-				if(!isset($_POST['chosen_series_coll'])) {
+				$sql = "SELECT COUNT(*) AS 'No. of comic books' FROM comic_book";
+			} else {
+				if($_POST['chosen_series_count'] == '') {
 					echo "<h4>Choose the series you want to be shown: </h4>";
 					echo "<a href = '_e_query_cb.html'><button>Back to the query comic books page</button></a>";
 				} else {
-					$series_coll = $_POST['chosen_series_coll'];
-					$sql = "SELECT series AS Series, issueNumber AS Issue, coverTitle AS Title FROM comic_book WHERE series = '$series_coll'";
+					$series_count = $_POST['chosen_series_count'];
+					$sql = "SELECT series AS Series, COUNT(*) AS 'No. of comic books' FROM comic_book WHERE series = '$series_count'";
 				}
 			}
-				
-/*				
-		    } elseif($_POST['count'] == 'not_all') {
-				if(!$_POST['chosen_series_coll']) {
-					echo "<h4>Choose the series you want to be shown: </h4>";
-					echo "<a href = '_e_query_cb.html'><button>Back to the query comic books page</button></a>";
-				} else {
-					$series_coll = $_POST['chosen_series_coll'];
-					$sql = "SELECT series AS Series, issueNumber AS Issue, coverTitle AS Title FROM comic_book WHERE series = '$series_coll'";
-				}
-			} else {
-				echo "<h4>Make your choice: </h4>";
-				echo "<a href = '_e_query_cb.html'><button>Back to the query comic books page</button></a>";
-			} */
 
-			# perform and check show collection query as per the choice taken
+			# perform and check counting query as per the choice taken and show it in a html table
 			if(!isset($sql)) {
 				exit;
 			} else {
@@ -71,6 +57,7 @@
 					}
 					echo "<tr>";
 				}
+
 				echo "</table>";
 			}
 

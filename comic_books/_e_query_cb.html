@@ -6,41 +6,93 @@
     </head>
 
     <body>
-		<p>
-			<center>
-			<h2>In this page you can run a few preset queries <br> for your comic books collection</h2>
-			</center>
-		</p>
+		<?php
+			# exploit script to perform MySQL connection
+			include('../connect.php');
+			
+							
+			/* retrieve series in the database by MySQL query to be used 
+			   within select control element in the following forms */
+			$sql = "SELECT DISTINCT series FROM comic_book";
 
-		<br>
-		<!-- The first form shows a list of comic books based on the parameters passed -->
-		<form method = 'post' action = 'cb_querying_show.php' id = 'show list'>
-		<p>
-			Show the comic books you own for the chosen series
-			<input type = 'radio' name = 'collection' value = 'all'>whole collection
-			<input type = 'radio' name = 'collection' value = 'not_all'>choose series <input type = 'text' name = 'chosen_series_coll'>
-		</p>
-		<p>
-			<input type = 'submit' value = 'show list'>
-			<input type = 'reset' value = 'reset fields'>
-		</p>
-		</form>
-		
-		<br>
-		<!-- The second form counts the comic books based on the parameters passed -->
-		<form method = 'post' action = 'cb_querying_count.php' id = 'show count'>
-		<p>
-			Count the number of comic books in your collection or in a specific series
-			<input type = 'radio' name = 'count' value = 'all'>whole collection
-			<input type = 'radio' name = 'count' value = 'not_all'>choose series <input type = 'text' name = 'chosen_series_count'>
-		</p>
-		<p>
-			<input type = 'submit' value = 'show count'>
-			<input type = 'reset' value = 'reset fields'>
-		</p>
-		</form>
+			echo "<p>";
+				echo "<center>";
+				echo "<h2>In this page you can run a few preset queries <br> for your comic books collection</h2>";
+				echo "</center>";
+			echo "</p>";
 
-		<br>
+
+			echo "<br>";
+			# The first form shows a list of comic books based on the parameters passed
+			echo "<form method = 'post' action = 'cb_querying_show.php' id = 'show list'>";
+
+			echo "<p>";
+			echo "<h4>Show the comic books you own for the chosen series</h4>";
+			echo "<input type = 'radio' name = 'collection' value = 'all'>whole collection";
+			echo "<input type = 'radio' name = 'collection' value = 'not_all'>choose series";
+			echo "<select name = 'chosen_series_coll'>";
+			/* check that query can be performed and that the queried
+			   table is not empty */
+			if($result1 = mysqli_query($conn, $sql) {
+				if(mysqli_num_rows($result1) > 0) {
+					while($row1 = mysqli_fetch_array($result1) {
+						echo "<option value = '$row1[1]'>";
+						echo $row1[1];
+						echo "</option>";
+					}
+				} else {
+					echo "<h4>No series in the database yet.</h4>";
+				}
+			} else {
+				echo "<h4>ERROR. Cannot execute $sql: </h4>" . mysqli_error($conn);
+			}
+			echo "</select>";
+			echo "</p>";
+
+			echo "<p>";
+				echo "<input type = 'submit' value = 'show list'>";
+				echo "<input type = 'reset' value = 'reset fields'>";
+			echo "</p>";
+
+			echo "</form>";
+
+			
+			echo "<br>";
+			# The second form counts the comic books based on the parameters passed
+			echo "<form method = 'post' action = 'cb_querying_count.php' id = 'show count'>";
+
+			echo "<p>";
+			echo "<h4>Count the number of comic books in your collection or in a specific series</h4>h4>";
+			echo "<input type = 'radio' name = 'count' value = 'all'>whole collection";
+			echo "<input type = 'radio' name = 'count' value = 'not_all'>choose series";
+			echo "<select name = 'chosen_series_count'>";
+			/* check that query can be performed and that the queried
+			   table is not empty */
+			if($result2 = mysqli_query($conn, $sql) {
+				if(mysqli_num_rows($result2) > 0) {
+					while($row2 = mysqli_fetch_array($result2) {
+						echo "<option value = '$row2[1]'>";
+						echo $row2[1];
+						echo "</option>";
+					}
+				} else {
+					echo "<h4>No series in the database yet.</h4>";
+				}
+			} else {
+				echo "<h4>ERROR. Cannot execute $sql: </h4>" . mysqli_error($conn);
+			}
+			echo "</select>";
+			echo "</p>";
+
+			echo "<p>";
+			echo "<input type = 'submit' value = 'show count'>";
+			echo "<input type = 'reset' value = 'reset fields'>";
+			echo "</p>";
+
+			echo "</form>";
+
+			echo "<br>";
+		?>
 
 		<p>
 			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
