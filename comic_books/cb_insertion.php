@@ -42,8 +42,11 @@
 				}
 			}
 			
-
-
+			echo "<p>";
+			echo "<a href= '_b_insert_cb.html'><button>Back to the insert comic book page</button></a>";
+			echo "<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>";
+			echo "<a href = '../index.html'><button>Back to the main page</button></a>";
+			echo "</p>";
 		?>
 	</body>
 </html>
