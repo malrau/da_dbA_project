@@ -27,17 +27,18 @@
 			echo "<form method = 'post' action = 'cb_querying_show.php' id = 'show list'>";
 
 			echo "<p>";
-			echo "<h4>Show the comic books you own for the chosen series</h4>";
-			echo "<input type = 'radio' name = 'collection' value = 'all'>whole collection";
-			echo "<input type = 'radio' name = 'collection' value = 'not_all'>choose series";
-			echo "<select name = 'chosen_series_coll'>";
+			echo "<h4>Show the comic books in your whole conllection or by series</h4>";
+			echo "<input type = 'radio' name = 'show' value = 'all'>whole collection";
+			echo " ";
+			echo "<input type = 'radio' name = 'show' value = 'not_all' checked>choose series";
+			echo "<select name = 'chosen_series_show'>";
 			/* check that query can be performed and that the queried
 			   table is not empty */
-			if($result1 = mysqli_query($conn, $sql) {
+			if($result1 = mysqli_query($conn, $sql)) {
 				if(mysqli_num_rows($result1) > 0) {
-					while($row1 = mysqli_fetch_array($result1) {
-						echo "<option value = '$row1[1]'>";
-						echo $row1[1];
+					while($row1 = mysqli_fetch_array($result1)) {
+						echo "<option value = '$row1[0]'>";
+						echo $row1[0];
 						echo "</option>";
 					}
 				} else {
@@ -62,17 +63,18 @@
 			echo "<form method = 'post' action = 'cb_querying_count.php' id = 'show count'>";
 
 			echo "<p>";
-			echo "<h4>Count the number of comic books in your collection or in a specific series</h4>h4>";
+			echo "<h4>Count the number of comic books in your whole collection or by series</h4>";
 			echo "<input type = 'radio' name = 'count' value = 'all'>whole collection";
-			echo "<input type = 'radio' name = 'count' value = 'not_all'>choose series";
+			echo " ";
+			echo "<input type = 'radio' name = 'count' value = 'not_all' checked>choose series";
 			echo "<select name = 'chosen_series_count'>";
 			/* check that query can be performed and that the queried
 			   table is not empty */
-			if($result2 = mysqli_query($conn, $sql) {
+			if($result2 = mysqli_query($conn, $sql)) {
 				if(mysqli_num_rows($result2) > 0) {
-					while($row2 = mysqli_fetch_array($result2) {
-						echo "<option value = '$row2[1]'>";
-						echo $row2[1];
+					while($row2 = mysqli_fetch_array($result2)) {
+						echo "<option value = '$row2[0]'>";
+						echo $row2[0];
 						echo "</option>";
 					}
 				} else {

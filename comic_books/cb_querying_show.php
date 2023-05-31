@@ -13,19 +13,23 @@
 			echo "<br>";
 			
 			# assign data and queriy to PHP variables
-			if(!isset($_POST['collection'])) {
+			/* first check if radio control element is set
+			   (notice, though, that this is no longer necessary,
+			    since I set the value 'not_all' to be checked
+			    by default, so the element will always be defined) */
+			if(!isset($_POST['show'])) {
 				echo "<p>";
 				echo "<h4>Make your choice: </h4>";
-				echo "<a href = '_e_query_cb.html'><button>Back to the query comic books page</button></a>";
+				echo "<a href = '_e_query_cb.php'><button>Back to the query comic books page</button></a>";
 				echo "</p>";
-			} elseif($_POST['collection'] == 'all') {
+			} elseif($_POST['show'] == 'all') {
 				$sql = "SELECT series AS Series, issueNumber AS Issue, coverTitle AS Title FROM comic_book ORDER BY Series, Issue";
 			} else {
-				if($_POST['chosen_series_coll'] == '') {
+				if($_POST['chosen_series_show'] == '') {
 					echo "<h4>Choose the series you want to be shown: </h4>";
-					echo "<a href = '_e_query_cb.html'><button>Back to the query comic books page</button></a>";
+					echo "<a href = '_e_query_cb.php'><button>Back to the query comic books page</button></a>";
 				} else {
-					$series_coll = $_POST['chosen_series_coll'];
+					$series_coll = $_POST['chosen_series_show'];
 					$sql = "SELECT series AS Series, issueNumber AS Issue, coverTitle AS Title FROM comic_book WHERE series = '$series_coll' ORDER BY Issue";
 				}
 			}
@@ -65,7 +69,7 @@
 
 		<br>
 		<p>
-			<a href = '_e_query_cb.html'><button>Back to the comic books query page</button></a>
+			<a href = '_e_query_cb.php'><button>Back to the comic books query page</button></a>
 			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
 			<a href = '../index.html'><button>Back to the main page</button></a>
 		</p>
