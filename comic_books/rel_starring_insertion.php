@@ -60,7 +60,7 @@
 					echo "<p>";
 					echo "<h4>The latest comic book inserted was: </h4>";
 					while($rowCb = mysqli_fetch_array($resultCb)) {
-						echo "<input type = 'checkbox' name = 'comic_bookID' value = $rowCb[0] checked>";
+						echo "<input type = 'radio' name = 'comic_bookID' value = $rowCb[0] checked>";
 						echo " ";
 						echo $rowCb[1] . ' ' . 'N.' . $rowCb[2] . ',' . ' ';
 						echo "<i>$rowCb[3]</i>";
