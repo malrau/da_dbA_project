@@ -21,7 +21,7 @@
 			// perform and check insertion into the chosen table
 			$sql = "INSERT INTO publishing(editor, comic_bookID) VALUES('$editor', '$comic_bookID')";
 			if(mysqli_query($conn, $sql)) {
-				echo "<h3>Data was successfully inserted into the table <i>publishing</i>.</h3>";
+				echo "<h4>Data was successfully inserted into the table <i>publishing</i>.</h4>";
 			} else {
 				echo "<h3>ERROR! Could not insert data into the table <i>publishing</i>: </h3>" . mysqli_error($conn);
 			}
@@ -67,7 +67,7 @@
 					echo "</p>";
 					mysqli_free_result($resultCb);
 				} else {
-					echo "<h3>No matching comic books are found.</h3>";
+					echo "<h4>No matching comic books are found.</h4>";
 				}
 			} else {
 				echo "<h3>ERROR. Cannot execute $sqlCb: </h3>" . mysqli_error($conn);
@@ -101,7 +101,7 @@
 					echo "<h4>No records in the <i>writer</i> table.</h4>";
 				}
 			} else {
-				echo "<h4>ERROR. Cannot execute $sqlWriter: </h4>" . mysqli_error($conn);
+				echo "<h3>ERROR. Cannot execute $sqlWriter: </h3>" . mysqli_error($conn);
 			}
 			
 			echo "<br>";
@@ -124,7 +124,7 @@
 					echo "<h4>No records in the <i>artist</i> table.</h4>";
 				}
 			} else {
-				echo "<h4>ERROR. Cannot execute $sqlArtist: </h4>" . mysqli_error($conn);
+				echo "<h3>ERROR. Cannot execute $sqlArtist: </h3>" . mysqli_error($conn);
 			}
 
 			echo "<br><br>";

@@ -33,12 +33,12 @@
 					# perform insertion into 'starring' for each character
 					$sql = "INSERT INTO starring(comic_bookID, figure, figureRole, city, country) VALUES('$comic_bookID', '$pseudonym', '$figureRole', '$city', '$country')";
 					if(mysqli_query($conn, $sql)) {
-						echo "<h3>Data was successfully inserted into the <i>starring</i> table.</h3>";
+						echo "<h4>Data was successfully inserted into the <i>starring</i> table.</h4>";
 					} else {
 						echo "<h3>ERROR! Could not insert data into the <i>starring</i> table: </h3>" . mysqli_error($conn);
 					}
 				} else {
-					echo "<h3>No character and role data found.</h3>";
+					echo "<h4>No character and role data found.</h4>";
 				}
 			}
 			
