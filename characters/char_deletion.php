@@ -11,7 +11,6 @@
 			include('../connect.php');
 
 			# Assign submitted data to PHP variable
-			echo $_POST['character'];
 			$character = $_POST['character'];
 
 			/* retrieve position of the space character to separate first 

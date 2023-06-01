@@ -27,8 +27,8 @@
 						/* if figure table is not empty create a form to
 						   select the character by first name and last name */
 						echo "<p>";
-						echo "<h4>Delete character</h4>";
-						echo "<form method = 'post' action = 'char_deletion.php' id = 'submit character'>";
+						echo "<h4>Select character</h4>";
+						echo "<form method = 'post' action = 'char_deletion.php' id = 'delete character'>";
 						echo "<select name = 'character'>";
 						while($row = mysqli_fetch_array($result)) {
 							$character = $row[0] . ' ' . $row[1]; # value to be passed to the 'post' array
@@ -38,12 +38,17 @@
 							echo "</option>";
 						}
 						echo "</select>";
-						echo "<input type = 'submit' value = 'submit character'>";
+						echo "<input type = 'submit' value = 'delete character'>";
+						echo "<h4>";
+						echo "Notice that removing a character referenced by<br>";
+						echo "another table will violate an integrity (foreign key)<br>";
+						echo "constraint and will throw an error message";
+						echo "</h4>";
 						echo "</form>";
 						echo "</p>";
 						mysqli_free_result($result);
 					} else {
-						echo "<h3>No matching records are found.</h3>";
+						echo "<h4>No matching records are found.</h4>";
 					}
 				} else {
 					echo "<h3>ERROR. Cannot execute $sql: </h3>" . mysqli_error($conn);
