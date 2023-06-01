@@ -27,9 +27,9 @@
 			echo "<form method = 'post' action = 'cb_querying_show.php' id = 'show list'>";
 
 			echo "<p>";
-			echo "<h4>Show the comic books in your whole conllection or by series</h4>";
+			echo "<h4>Show the comic books in your whole conllection or by series:</h4>";
 			echo "<input type = 'radio' name = 'show' value = 'all'>whole collection";
-			echo " ";
+			echo "<br><br>";
 			echo "<input type = 'radio' name = 'show' value = 'not_all' checked>choose series";
 			echo "<select name = 'chosen_series_show'>";
 			/* check that query can be performed and that the queried
@@ -63,9 +63,9 @@
 			echo "<form method = 'post' action = 'cb_querying_count.php' id = 'show count'>";
 
 			echo "<p>";
-			echo "<h4>Count the number of comic books in your whole collection or by series</h4>";
+			echo "<h4>Count the number of comic books in your whole collection or by series:</h4>";
 			echo "<input type = 'radio' name = 'count' value = 'all'>whole collection";
-			echo " ";
+			echo "<br><br>";
 			echo "<input type = 'radio' name = 'count' value = 'not_all' checked>choose series";
 			echo "<select name = 'chosen_series_count'>";
 			/* check that query can be performed and that the queried
