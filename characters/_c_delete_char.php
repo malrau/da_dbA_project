@@ -14,46 +14,27 @@
 				echo "</center>";
 				echo "</p>";
 
-				mysqli_report(MYSQLI_REPORT_ERROR);
+				# exploit script to perform MySQL connection
+				include('../connect.php');
 				
-				// return settings from configuration file into an associative array
-				$config = parse_ini_file('../config.ini');
-				// retrieve parameters to access MySQL from associative array and
-				// assign them to PHP variables
-				$servername = $config['servername'];
-				$username = $config['username'];
-				$password = $config['password'];
-				$dbname = $config['dbname'];
-				
-				// create and check connection to MySQL
-				$conn = mysqli_connect($servername, $username, $password, $dbname);
-				if(!$conn) {
-					echo "<h3>Cannot connect to MySQL: </h3>" . mysqli_connect_error();
-					exit;
-				} // else {
-//					echo "<h3>Successfully connected to MySQL.</h3>";
-//				}
-// 				the above three lines are commented because I don't want 
-//				this message to be shown in the page where the query is set
-				
-				// define query to retrieve all results from the table 
-				// figure and store the query result
-				$sql = 'SELECT * FROM figure';
-				$result = mysqli_query($conn, $sql);
+				/* define query to retrieve all results from the table 
+				   figure and store the query result */
+				$sql = "SELECT * FROM figure";
 				
 				// check if figure table is empty
-				if($result) {
+				if($result = mysqli_query($conn, $sql)) {
 					if(mysqli_num_rows($result) > 0) {
-						// if figure table is not empty create a form to
-						// select the character by first name and last name
+						/* if figure table is not empty create a form to
+						   select the character by first name and last name */
 						echo "<p>";
 						echo "<h4>Delete character</h4>";
 						echo "<form method = 'post' action = 'char_deletion.php' id = 'submit character'>";
 						echo "<select name = 'character'>";
 						while($row = mysqli_fetch_array($result)) {
-							$character = $row[0] . ' ' . $row[1];
+							$character = $row[0] . ' ' . $row[1]; # value to be passed to the 'post' array
+							$charPseudo = $row[0] . ' ' . $row[1] . ' ' . '(' . $row[2] . ')'; # value to be shown in the drop down menu
 							echo "<option value = '$character'>";
-							echo $character;
+							echo $charPseudo;
 							echo "</option>";
 						}
 						echo "</select>";
