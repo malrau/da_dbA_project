@@ -29,17 +29,17 @@
 					   the selected character appears */
 					echo "<p>";
 					echo "<h4>Show the comic book issues in which the selected character appears:</h4>";
-					echo "<form method = 'post' action = 'FIRST_querying.php' id = 'FIRSTQUERY'>";
+					echo "<form method = 'post' action = 'char_querying_show.php' id = 'show issues'>";
 					echo "<select name = 'character'>";
 					while($rowShow = mysqli_fetch_array($resultShow)) {
-						$character = $rowShow[0] . ' ' . $rowShow[1];
+						$character = $rowShow[2];
 						$charPseudo = $rowShow[0] . ' ' . $rowShow[1] . ' ' . '(' . $rowShow[2] . ')';
 						echo "<option value = '$character'>";
 						echo $charPseudo;
 						echo "</option>";
 					}
 					echo "</select>";
-					echo "<input type = 'submit' value = 'FIRSTQUERY'>";
+					echo "<input type = 'submit' value = 'show issues'>";
 					echo "<input type = 'reset' value = 'reset fields'>";
 					echo "</form>";
 					echo "</p>";
@@ -60,17 +60,17 @@
 					   the selected character appears */
 					echo "<p>";
 					echo "<h4>Count the comic book issues in which the selected character appears:</h4>";
-					echo "<form method = 'post' action = SECOND_querying.php id = 'SECONDQUERY'>";
+					echo "<form method = 'post' action = char_querying_count.php id = 'count issues'>";
 					echo "<select name = 'character'>";
 					while($rowCount = mysqli_fetch_array($resultCount)) {
-						$character = $rowCount[0] . ' ' . $rowCount[1];
+						$character = $rowCount[2];
 						$charPseudo = $rowCount[0] . ' ' . $rowCount[1] . ' ' . '(' . $rowCount[2] . ')';
 						echo "<option value = '$character'>";
 						echo $charPseudo;
 						echo "</option>";
 					}
 					echo "</select>";
-					echo "<input type = 'submit' value = 'SECONDQUERY'>";
+					echo "<input type = 'submit' value = 'count issues'>";
 					echo "<input type = 'reset' value = 'reset fields'>";
 					echo"</form>";
 					echo "</p>";
