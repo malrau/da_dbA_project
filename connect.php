@@ -31,6 +31,8 @@
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	if(!$conn) {
 		echo "<h4>Cannot connect to MySQL: </h4>" . mysqli_connect_error();
+		echo "<br><br>";
+		echo "<a href = '../index.html'><button>Back to the main page</button></a>";
 		exit;
 	} else {
 		echo "<h4>Successfully connected to MySQL</h4>";
