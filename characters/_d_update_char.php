@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>
-			Webapp - character deletion page
+			Webapp - character update page
 		</title>
 	</head>
 
