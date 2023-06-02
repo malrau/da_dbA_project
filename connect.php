@@ -33,7 +33,7 @@
 		echo "<h4>Cannot connect to MySQL: </h4>" . mysqli_connect_error();
 		exit;
 	} else {
-		echo "<h4>Successfully connected to MySQL.</h4>";
+		echo "<h4>Successfully connected to MySQL</h4>";
 	}
 
 	echo "<br>";

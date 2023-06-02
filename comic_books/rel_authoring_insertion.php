@@ -15,10 +15,10 @@
 			************** FROM **************
 			** rel_publishing_insertion.php **
 			**********************************/
-			// assign data to PHP variables
+			# assign data to PHP variables
 			$editor = $_POST['editor'];
 			$comic_bookID = $_POST['comic_bookID'];
-			// perform and check insertion into the chosen table
+			# perform and check insertion into the chosen table
 			$sql = "INSERT INTO publishing(editor, comic_bookID) VALUES('$editor', '$comic_bookID')";
 			if(mysqli_query($conn, $sql)) {
 				echo "<h4>Data was successfully inserted into the table <i>publishing</i>.</h4>";

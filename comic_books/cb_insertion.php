@@ -10,13 +10,10 @@
 			# exploit script to perform MySQL connection
 			include('../connect.php');
 			
-			// assign data to PHP variables
+			# assign data to PHP variables
 			$comic_bookID = $_POST['comic_bookID'];
 			$city = $_POST['city'];
 			$country = $_POST['country'];
-			#echo $cbID;
-			#echo $city;
-			#echo $country;
 
 			foreach($_POST as $key => $value) {
 				if($dashPosition = strpos($key, '-')) {
@@ -41,12 +38,14 @@
 					echo "<h4>No character and role data found.</h4>";
 				}
 			}
-			
-			echo "<p>";
-			echo "<a href= '_b_insert_cb.html'><button>Back to the insert comic book page</button></a>";
-			echo "<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>";
-			echo "<a href = '../index.html'><button>Back to the main page</button></a>";
-			echo "</p>";
 		?>
+		
+		<br>
+
+		<p>
+			<a href= '_b_insert_cb.html'><button>Back to the insert comic book page</button></a>
+			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
+			<a href = '../index.html'><button>Back to the main page</button></a>
+		</p>
 	</body>
 </html>

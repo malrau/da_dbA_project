@@ -30,7 +30,6 @@
 			} else {
 				echo "<h3>ERROR. Could not remove $firstName $lastName from the table <i>figure</i>.</h3>";
 			}
-			
 		?>
 
 		<br>

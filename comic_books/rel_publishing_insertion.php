@@ -14,11 +14,11 @@
 			*** STEP 1: COMPLETE INSERTION ***
 			***** FROM _b_insert_cb.html *****
 			**********************************/
-			// assign data to PHP variables
+			# assign data to PHP variables
 			$series = $_POST['insert_series'];
 			$issue = $_POST['insert_issue'];
 			$title = $_POST['cover_title'];
-			// perform and check insertion into the chosen table
+			# perform and check insertion into the chosen table
 			$sql = "INSERT INTO comic_book(series, issueNumber, coverTitle) VALUES('$series', '$issue', '$title')";
 			if(mysqli_query($conn, $sql)) {
 				echo "<h4>Data was successfully inserted into the table <i>comic_book</i>.</h4>";

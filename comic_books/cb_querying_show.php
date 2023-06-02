@@ -1,16 +1,14 @@
 <html>
-    <head>
+	<head>
 		<title>
 			Query comic book collection
 		</title>
-    </head>
+	</head>
 
-    <body>
+	<body>
 		<?php
 			# exploit script to perform MySQL connection
 			include('../connect.php');
-
-			echo "<br>";
 			
 			# assign data and queriy to PHP variables
 			/* first check if radio control element is set
@@ -64,15 +62,14 @@
 
 				echo "</table>";
 			}
-
 		?>
 
 		<br>
+
 		<p>
 			<a href = '_e_query_cb.php'><button>Back to the comic books query page</button></a>
 			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
 			<a href = '../index.html'><button>Back to the main page</button></a>
 		</p>
-
-    </body>
+	</body>
 <html>

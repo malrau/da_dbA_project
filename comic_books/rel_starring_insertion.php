@@ -1,11 +1,11 @@
 <html>
-    <head>
-	<title>
-	    Inserted comic book data
-	</title>
-    </head>
+	<head>
+		<title>
+			Inserted comic book data
+		</title>
+	</head>
 
-    <body>
+	<body>
 		<?php
 			# exploit script to perform MySQL connection (commented, at the moment)
 			include('../connect.php');
@@ -15,11 +15,11 @@
 			************** FROM **************
 			** rel_authoring_insertion.php  **
 			**********************************/
-			// assign data to PHP variables
+			# assign data to PHP variables
 			$writerID = $_POST['writerID'];
 			$artistID = $_POST['artistID'];
 			$comic_bookID = $_POST['comic_bookID'];
-			// perform and check insertion into the chosen table
+			# perform and check insertion into the chosen table
 			$sql = "INSERT INTO authoring(writerID, artistID, comic_bookID) VALUES('$writerID', '$artistID', '$comic_bookID')";
 			if(mysqli_query($conn, $sql)) {
 				echo "<h4>Data was successfully inserted into the table <i>authoring</i>.</h4>";
@@ -98,8 +98,8 @@
 						echo " ";
 						echo $rowFigure[2] . ' ';
 						echo " - Input role: ";
-						// here I set a different name for each textbox generated
-						// but I attach the same pattern '-role'
+						/* here I set a different name for each textbox generated
+						   but I attach the same pattern '-role' */
 						$role = $rowFigure[2] . '-role';
 						echo "<input type = 'text' name = '$role'>";
 						echo "<br>";
@@ -131,14 +131,14 @@
 			
 			# FORM END
 			echo "</form>";
-						
 		?>
 
 		<br>
+
 		<p>
 			<a href = '_b_insert_cb.html'><button>Back to the insert comic book page</button></a>
 			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
 			<a href = '../index.html'><button>Back to the main page</button></a>
 		</p>
-    </body>
+	</body>
 </html>

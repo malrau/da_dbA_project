@@ -1,53 +1,35 @@
 <html>
-    <head>
-	<title>
-	    Inserted character data
-	</title>
-    </head>
+	<head>
+		<title>
+			Inserted character data
+		</title>
+	</head>
 
-    <body>
-	<?php
-	    // the following line allows me to report connection errors,
-	    // otherwise a blank page would occur in case of errors
-	    mysqli_report(MYSQLI_REPORT_ERROR);
+	<body>
+		<?php
+			# exploit script to perform MySQL connection
+			include('../connect.php');
 
-		// return settings from configuration file into an associative array
-	    $config = parse_ini_file('../config.ini');
-	    // get parameters to access MySQL from associative array and
-	    // assign them to PHP variables
-	    $servername = $config['servername'];
-	    $username = $config['username'];
-	    $password = $config['password'];
-	    $dbname = $config['dbname'];
+			# assign submitted data to PHP variables
+			$firstName = $_POST['first_name'];
+			$lastName = $_POST['last_name'];
+			$pseudo = $_POST['pseudo'];
 
-	    // create and check connection to MySQL
-	    $conn = mysqli_connect($servername, $username, $password, $dbname);
-	    if(!$conn) {
-		echo "<h3>Cannot connect to MySQL: </h3>" . mysqli_connect_error();
-		exit;
-	    } else {
-		echo "<h3>Successfully connected to MySQL.</h3>";
-	    }
+			# perform and check insertion into the chosen table
+			$sql = "INSERT INTO figure(firstName, lastName, pseudonym) VALUES('$firstName', '$lastName', '$pseudo')";
+			if(mysqli_query($conn, $sql)) {
+				echo "<h3>Data was successfully inserted into the table <i>figure</i>.</h3>";
+			} else {
+				echo "<h3>ERROR! Could not insert data into the table <i>figure</i>: </h3>" . mysqli_error($conn);
+			}
+		?>
 
-	    // assign submitted data to PHP variables
-	    $firstName = $_POST['first_name'];
-	    $lastName = $_POST['last_name'];
-	    $pseudo = $_POST['pseudo'];
+		<br>
 
-	    //perform and check insertion into the chosen table
-	    $sql = "INSERT INTO figure(firstName, lastName, pseudonym) VALUES('$firstName', '$lastName', '$pseudo')";
-	    if(mysqli_query($conn, $sql)) {
-		echo "<h3>Data was successfully inserted into the table <i>figure</i>.</h3>";
-	    } else {
-		echo "<h3>ERROR! Could not insert data into the table <i>figure</i>: </h3>" . mysqli_error($conn);
-	    }
-	?>
-
-	<br>
-	<p>
-	    <a href = '_b_insert_char.html'><button>Back to the insert character page</button></a>
-	    <a href = '_a_characters.html'><button>Back to the characters page</button></a>
-	    <a href = '../index.html'><button>Back to the main page</button></a>
-	</p>
-    </body>
+		<p>
+			<a href = '_b_insert_char.html'><button>Back to the insert character page</button></a>
+			<a href = '_a_characters.html'><button>Back to the characters page</button></a>
+			<a href = '../index.html'><button>Back to the main page</button></a>
+		</p>
+	</body>
 </html>

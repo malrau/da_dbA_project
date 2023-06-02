@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>
-		Webapp - character queries page
+			Webapp - character queries page
 		</title>
 	</head>
 
@@ -84,7 +84,9 @@
 			}
 			echo "<br>";
 		?>
-		
+
+		<br>
+
 		<p>
 			<a href = '_a_characters.html'><button>Back to the characters page</button></a>
 			<a href = '../index.html'><button>Back to the main page</button></a>

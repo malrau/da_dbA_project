@@ -1,11 +1,11 @@
 <html>
-    <head>
+	<head>
 		<title>
 			Query comic book collection
 		</title>
-    </head>
+	</head>
 
-    <body>
+	<body>
 		<?php
 			# exploit script to perform MySQL connection
 			include('../connect.php');
@@ -64,7 +64,6 @@
 
 				echo "</table>";
 			}
-
 		?>
 
 		<br>
@@ -74,5 +73,5 @@
 			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
 			<a href = '../index.html'><button>Back to the main page</button></a>
 		</p>
-    </body>
+	</body>
 <html>
