@@ -12,7 +12,7 @@
 
 			echo "<p>";
 			echo "<center>";
-			echo "<h2>In this page you can update data for your comic book authors <br> in your collection</h2>";
+			echo "<h2>In this page you can update data for the comic book editors <br> in your collection</h2>";
 			echo "</center>";
 			echo"</p>";
 
@@ -42,7 +42,7 @@
 					# 2) choose the attribute you want to update
 					echo "<p>";
 					echo "Choose the attribute you want to update:";
-					echo "<input type = 'radio' name = 'attribute' value = 'name'>name;";
+					echo "<input type = 'radio' name = 'attribute' value = 'name'>name; ";
 					echo "<input type = 'radio' name = 'attribute' value = 'city'>city";
 					echo "</p>";
 
