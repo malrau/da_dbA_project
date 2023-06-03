@@ -23,9 +23,9 @@
 			# check if figure table is empty
 			if($result = mysqli_query($conn, $sql)) {
 				if(mysqli_num_rows($result) > 0) {
-					# if figure table is not empty create a form to
+					# if figure table is not empty create a form to:
 
-					# 1) select the character
+					# 1) check the character data that need be updated
 					echo "<h4>Check the character data you want to update:</h4>";
 					echo "<form method = 'post' action = 'char_update.php'>";
 					echo "<p>";
@@ -57,7 +57,7 @@
 					echo "<input type = 'text' name = 'new'>";
 					echo "</p>";
 
-					echo "<input type = 'submit' value = 'submit character'>";
+					echo "<input type = 'submit' value = 'submit attribute'>";
 					echo "<input type = 'reset' value = 'reset fields'>";
 					echo "</form>";
 					mysqli_free_result($result);

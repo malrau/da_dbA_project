@@ -16,7 +16,7 @@
 			echo "</center>";
 			echo"</p>";
 
-			# query the editor table for all results
+			# query the writer table for all results
 			$sql = "SELECT * FROM writer";
 
 			# check that the above defined query can be performed
@@ -31,6 +31,7 @@
 					echo "<p>";
 					echo "<select name = 'writer'>";
 					while($row = mysqli_fetch_array($result)) {
+						# show writer pseudonym if present
 						if(!$row[3]) {
 							echo "<option value = '$row[1] . ' ' ' ' . $row[2]'>";
 							echo $row[1] . ' ' . $row[2];
