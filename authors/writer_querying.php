@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>
-			Query editors
+			Query writers
 		</title>
 	</head>
 
