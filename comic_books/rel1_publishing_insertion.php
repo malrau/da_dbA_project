@@ -43,7 +43,7 @@
 			echo "</p>";
 
 			# FORM START
-			echo "<form method = 'post' action = 'rel_authoring_insertion.php'>";
+			echo "<form method = 'post' action = 'rel2_authoring_insertion.php'>";
 		   
 		   /**********************************
 			*** STEP 2: FEED COMIC BOOK ID ***
