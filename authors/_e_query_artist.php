@@ -39,7 +39,7 @@
 					}
 					echo "</select>";
 					echo "<input type = 'submit' value = 'show comic books'>";
-					echo "<input type = 'reset' value = 'reset fields'>";
+					# echo "<input type = 'reset' value = 'reset fields'>"; 	*** UNNECESSARY BUTTON ***
 					echo "</form>";
 					echo "</p>";
 				} else {

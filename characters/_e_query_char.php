@@ -39,8 +39,8 @@
 						echo "</option>";
 					}
 					echo "</select>";
-					echo "<input type = 'submit' value = 'show issues'>";
-					echo "<input type = 'reset' value = 'reset fields'>";
+					echo "<input type = 'submit' value = 'show comic books'>";
+					# echo "<input type = 'reset' value = 'reset fields'>"; 	*** UNNECESSARY BUTTON ***
 					echo "</form>";
 					echo "</p>";
 					mysqli_free_result($resultShow);
@@ -70,8 +70,8 @@
 						echo "</option>";
 					}
 					echo "</select>";
-					echo "<input type = 'submit' value = 'count issues'>";
-					echo "<input type = 'reset' value = 'reset fields'>";
+					echo "<input type = 'submit' value = 'count comic books'>";
+					# echo "<input type = 'reset' value = 'reset fields'>"; 	*** UNNECESSARY BUTTON ***
 					echo"</form>";
 					echo "</p>";
 					mysqli_free_result($resultCount);
