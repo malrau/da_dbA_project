@@ -14,25 +14,30 @@
 			$comic_bookID = $_POST['comic_bookID'];
 			$city = $_POST['city'];
 			$country = $_POST['country'];
-
+			/* the following code assigns character pseudonym and role to
+			   the variables $pseudonym and $figureRole */
 			foreach($_POST as $key => $value) {
 				if($dashPosition = strpos($key, '-')) {
+					/* the string to the left of the dash position is the
+					   key storing the value for the character pseudonym */
 					$pseudoKey = substr($key, 0, $dashPosition);
-					/*  note that $pseudoKey, within the $_POST array is
-						key and value at the same time */
+					/* note, anyway, that $pseudoKey, within the $_POST
+					   array is key and value at the same time */
 					$pseudonym = $_POST[$pseudoKey];
-					# echo "PSEUDO " . $pseudonym;
-					$tempRole = substr($key, $dashPosition + 1);
-					/*	I reconstruct the role key to retrieve the corresponding
-						value from the $_POST array */
-					$figureRole = $_POST[$pseudoKey . '-' . $tempRole];
-					# echo "ROLE " . $figureRole;
-					# perform insertion into 'starring' for each character
-					$sql = "INSERT INTO starring(comic_bookID, figure, figureRole, city, country) VALUES('$comic_bookID', '$pseudonym', '$figureRole', '$city', '$country')";
-					if(mysqli_query($conn, $sql)) {
-						echo "<h4>Data was successfully inserted into the <i>starring</i> table.</h4>";
+					if(!isset($pseudonym)) {
+						# this blank row is for 'do nothing'
 					} else {
-						echo "<h3>ERROR! Could not insert data into the <i>starring</i> table: </h3>" . mysqli_error($conn);
+						$tempRole = substr($key, $dashPosition + 1);
+						/*	I reconstruct the role key to retrieve the corresponding
+							value from the $_POST array */
+						$figureRole = $_POST[$pseudoKey . '-' . $tempRole];
+						# perform insertion into 'starring' for each character
+						$sql = "INSERT INTO starring(comic_bookID, figure, figureRole, city, country) VALUES('$comic_bookID', '$pseudonym', '$figureRole', '$city', '$country')";
+						if(mysqli_query($conn, $sql)) {
+							echo "<h4>Data was successfully inserted into the <i>starring</i> table.</h4>";
+						} else {
+							echo "<h3>ERROR! Could not insert data into the <i>starring</i> table: </h3>" . mysqli_error($conn);
+						}
 					}
 				} else {
 					echo "<h4>No character and role data found.</h4>";
