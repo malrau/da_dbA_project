@@ -14,7 +14,7 @@ CREATE TABLE comic_book(
     series VARCHAR(30),
     issueNumber INT,
     coverTitle VARCHAR(50),
-    UNIQUE(series),
+    UNIQUE(series, issueNumber),
     PRIMARY KEY(cbID)
     );
 
