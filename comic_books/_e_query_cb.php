@@ -102,6 +102,5 @@
 			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
 			<a href = '..\index.html'><button>Back to the main page</button></a>
 		</p>
-
 	</body>
 </html>

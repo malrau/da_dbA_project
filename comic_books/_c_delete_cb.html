@@ -1,39 +1,41 @@
 <html>
-    <head>
-	<title>
-	    Webapp - comic book deletion page
-	</title>
-    </head>
+	<head>
+		<title>
+			Webapp - comic book deletion page
+		</title>
+	</head>
 
-    <body>
-	<p>
-	    <center>
-		<h2>In this page you can submit the request <br> to remove an issue from a series you own</h2>
-	    </center>
-	</p>
+	<body>
+		<p>
+			<center>
+				<h2>In this page you can submit the request <br> to remove an issue from a series you own</h2>
+			</center>
+		</p>
 
-	<br>
-	<form method = 'post' action = 'cb_deletion.php'>
+		<br>
 
-	<p>
-	    Insert the comic book series from which you want to remove an issue: <input type = 'text' name ='delete_series'>
-	</p>
-	<p>
-	    Insert the issue number from the series you want to remove: <input type = 'text' name = 'delete_issue'>
-	</p>
+		<form method = 'post' action = 'cb_deletion.php'>
 
-	<p>
-	    <input type = 'submit' value = 'send request'>
-	    <input type = 'reset' value = 'reset fields'>
-	</p>
-	
-	</form>
+		<p>
+			Insert the comic book series from which you want to remove an issue: <input type = 'text' name ='delete_series'>
+		</p>
 
-	<br>
-	<p>
-	    <a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
-	    <a href = '../index.html'><button>Back to the main page</button></a>
-	</p>
+		<p>
+			Insert the issue number from the series you want to remove: <input type = 'text' name = 'delete_issue'>
+		</p>
 
-    </body>
+		<p>
+			<input type = 'submit' value = 'send request'>
+			<input type = 'reset' value = 'reset fields'>
+		</p>
+		
+		</form>
+
+		<br>
+
+		<p>
+			<a href = '_a_comic_books.html'><button>Back to the comic books page</button></a>
+			<a href = '../index.html'><button>Back to the main page</button></a>
+		</p>
+	</body>
 </html>
