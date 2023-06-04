@@ -65,6 +65,11 @@
 			
 					echo "<input type = 'submit' value = 'submit attribute'>";
 					echo "<input type = 'reset' value = 'reset fields'>";
+					echo "<h4>";
+					echo "Notice that first name and last name are not<br>";
+					echo "unique across the writer table, so updating them<br>";
+					echo "may result in processing unwanted changes";
+					echo "</h4>";
 					echo "</form>";
 					mysqli_free_result($result);
 				} else {

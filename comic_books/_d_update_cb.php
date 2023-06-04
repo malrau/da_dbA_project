@@ -62,7 +62,11 @@
 					echo "<input type = 'submit' value = 'update data'>";
 					echo "<input type = 'reset' value = 'reset fields'>";
 					echo "</p>";
-
+					echo "<h4>";
+					echo "Notice that issue number and cover title are not<br>";
+					echo "unique across the comic_book table, so updating them<br>";
+					echo "may result in processing unwanted changes";
+					echo "</h4>";
 					echo "</form>";
 				} else {
 					echo "<h4>No matching records are found</h4>";
