@@ -9,18 +9,16 @@
 		<?php
 			# exploit script to perform MySQL connection
 			include('../connect.php');
-			
-							
+
+			echo "<p>";
+			echo "<center>";
+			echo "<h2>In this page you can run a few preset queries <br> for your comic books collection</h2>";
+			echo "</center>";
+			echo "</p>";
+
 			/* retrieve series in the database by MySQL query to be used 
 			   within select control element in the following forms */
 			$sql = "SELECT DISTINCT series FROM comic_book";
-
-			echo "<p>";
-				echo "<center>";
-				echo "<h2>In this page you can run a few preset queries <br> for your comic books collection</h2>";
-				echo "</center>";
-			echo "</p>";
-
 
 			echo "<br>";
 			# The first form shows a list of comic books based on the parameters passed

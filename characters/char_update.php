@@ -29,9 +29,9 @@
 			# perform and check update on the chosen table
 			$sql = "UPDATE figure SET $attribute = '$new' WHERE $attribute = '$old'";
 			if(mysqli_query($conn, $sql)) {
-				echo "<h3>Data from table <i>figure</i> was successfully updated.</h3>";
+				echo "<h3>Attribute $attribute from table <i>figure</i> has been successfully updated.</h3>";
 			} else {
-				echo "<h3>Could not update data from table <i>figure</i>.</h3>";
+				echo "<h3>Could not update attribute $attribute from table <i>figure</i>.</h3>";
 			}
 		?>
 
