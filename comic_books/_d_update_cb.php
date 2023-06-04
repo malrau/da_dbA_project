@@ -26,7 +26,6 @@
 					   in the comic_book table), create a form to: */
 
 					# 1) check the comic book data that need be updated
-					echo "<p>";
 					echo "<h4>Check the comic book data that you want to update:</h4>";
 					echo "<form method = 'post' action = 'cb_update.php'>";
 					echo "<p>";

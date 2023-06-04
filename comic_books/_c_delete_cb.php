@@ -24,9 +24,9 @@
 				if(mysqli_num_rows($result) > 0) {
 					/* if the query result is not empty create a form to
 					   select the series */
+					echo "<form method = 'post' action = 'cb_deletion.php'>";
 					echo "<p>";
 					echo "<h4>Select the series from which you want to remove an issue:</h4>";
-					echo "<form method = 'post' action = 'cb_deletion.php'>";
 					echo "<select name = 'delete_series'>";
 					while($row = mysqli_fetch_array($result)) {
 						echo "<option value = '$row[0]'>";
@@ -36,14 +36,23 @@
 					echo "</select>";
 					echo "</p>";
 
+					echo "<br>";
+
 					echo "<p>";
-					echo "Insert the issue number for the series you want to remove: ";
+					echo "<h4>Insert the issue number for the series you want to remove:</h4>";
 					echo "<input type = 'text' name = 'delete_issue'>";
 					echo "</p>";
+
+					echo "<br>";
 
 					echo "<p>";
 					echo "<input type = 'submit' value = 'submit request'>";
 					echo "<input type = 'reset' value = 'reset fields'>";
+					echo "<h4>";
+					echo "Notice that removing a comic book referenced by<br>";
+					echo "another table will violate an integrity (foreign key)<br>";
+					echo "constraint and will throw an error message";
+					echo "</h4>";
 					echo "</p>";
 					echo "</form>";
 				} else {
